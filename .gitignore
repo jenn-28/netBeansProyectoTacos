@@ -1,0 +1,10 @@
+# Ignorar archivos locales de NetBeans
+nbproject/private/
+
+# Ignorar archivos de compilación de Java
+build/
+dist/
+*.class
+*.jar
+*.war
+*.ear
