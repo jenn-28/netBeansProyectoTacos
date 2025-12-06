@@ -1,0 +1,23 @@
+# Archivos/Carpetas de NETBEANS (IDE)
+
+nbproject/private/ # Archivos de configuración y estado del IDE específicos de tu usuario.
+
+
+# Archivos y Artefactos de Compilación de Java
+
+build/              # Carpeta generada durante la compilación (contiene archivos .class).
+dist/               # Carpeta de distribución final (contiene archivos .jar, .war, .ear, etc.).
+*.jar               # Paquetes compilados (JARs).
+*.war               # Paquetes web compilados (WARs).
+*.ear               # Paquetes empresariales compilados (EARs).
+*.class             # Archivos de clases compiladas.
+# Si usas Maven o Gradle (comunes en Java, aunque no siempre con NetBeans):
+target/             # Carpeta de salida de Maven.
+
+
+# Archivos Temporales y Generales del Sistema
+*~                  # Archivos de copia de seguridad temporales.
+*.tmp               # Archivos temporales genéricos.
+*.log               # Archivos de registro.
+.DS_Store           # Archivo de sistema de macOS (si trabajas con usuarios de Mac).
+Thumbs.db           # Archivo de sistema de Windows.
