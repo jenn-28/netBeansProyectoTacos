@@ -8,4 +8,5 @@ public class AlmacenDatos {
     //lista de insumos
     public static ListaEnlazada<Insumo> listaInsumos = new ListaEnlazada<>();
     public static ListaEnlazada<Movimiento> historialMovimientos = new ListaEnlazada<>();
+    public static ListaEnlazada<Proveedor> listaProveedores = new ListaEnlazada<>();
 }
