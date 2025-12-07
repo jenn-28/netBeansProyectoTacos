@@ -1,18 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package interfaces;
 
-/**
- *
- * @author Asus
- */
 public class GestionProveedores extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form GestionProveedores
-     */
     public GestionProveedores() {
         initComponents();
     }
@@ -41,7 +30,6 @@ public class GestionProveedores extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableProveedores = new javax.swing.JTable();
-        btnVolver = new javax.swing.JLabel();
 
         setTitle("Gestión Proveedores");
 
@@ -156,9 +144,6 @@ public class GestionProveedores extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tableProveedores);
 
-        btnVolver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/deshacer.png"))); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -167,19 +152,13 @@ public class GestionProveedores extends javax.swing.JInternalFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(32, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-                .addGap(21, 21, 21))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("          Mostrar          ", jPanel2);
@@ -202,12 +181,11 @@ public class GestionProveedores extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnLimpiar;
-    private javax.swing.JLabel btnVolver;
-    private javax.swing.JComboBox<String> cmbProducto;
+    public javax.swing.JButton btnEditar;
+    public javax.swing.JButton btnEliminar;
+    public javax.swing.JButton btnGuardar;
+    public javax.swing.JButton btnLimpiar;
+    public javax.swing.JComboBox<String> cmbProducto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -215,8 +193,8 @@ public class GestionProveedores extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable tableProveedores;
-    private javax.swing.JTextField txtNombreEmpresa;
-    private javax.swing.JTextField txtTelefono;
+    public javax.swing.JTable tableProveedores;
+    public javax.swing.JTextField txtNombreEmpresa;
+    public javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
