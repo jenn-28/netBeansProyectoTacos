@@ -15,7 +15,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        escritorio = new javax.swing.JDesktopPane();
         lblUsuarioActual = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JLabel();
@@ -25,27 +25,27 @@ public class MenuAdministrador extends javax.swing.JFrame {
         menuItemGestionMenus = new javax.swing.JMenuItem();
         menuItemGestionProvedores = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        menuReporteVentas = new javax.swing.JMenuItem();
+        menuReporteInsumos = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        menuDesarolladores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tacos y Lonches Pancho");
 
         jPanel1.setBackground(new java.awt.Color(224, 210, 193));
 
-        jDesktopPane1.setBackground(new java.awt.Color(224, 210, 193));
-        jDesktopPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Titulo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(86, 62, 46))); // NOI18N
+        escritorio.setBackground(new java.awt.Color(224, 210, 193));
+        escritorio.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Titulo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(86, 62, 46))); // NOI18N
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1262, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 552, Short.MAX_VALUE)
         );
 
@@ -68,7 +68,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(55, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblUsuarioActual, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -82,7 +82,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(48, Short.MAX_VALUE)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -119,13 +119,13 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jMenu2.setText("       Reportes       ");
         jMenu2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
-        jMenuItem4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem4.setText("Reporte Ventas");
-        jMenu2.add(jMenuItem4);
+        menuReporteVentas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menuReporteVentas.setText("Reporte Ventas");
+        jMenu2.add(menuReporteVentas);
 
-        jMenuItem5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem5.setText("Reporte Insumos");
-        jMenu2.add(jMenuItem5);
+        menuReporteInsumos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menuReporteInsumos.setText("Reporte Insumos");
+        jMenu2.add(menuReporteInsumos);
 
         jMenuBar1.add(jMenu2);
 
@@ -134,9 +134,9 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jMenu3.setText("       Acerca de       ");
         jMenu3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
-        jMenuItem6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem6.setText("Desarrolladores");
-        jMenu3.add(jMenuItem6);
+        menuDesarolladores.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menuDesarolladores.setText("Desarrolladores");
+        jMenu3.add(menuDesarolladores);
 
         jMenuBar1.add(jMenu3);
 
@@ -193,20 +193,20 @@ public class MenuAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnCancelar;
-    private javax.swing.JLabel btnRegresar;
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
+    public javax.swing.JLabel btnCancelar;
+    public javax.swing.JLabel btnRegresar;
+    public javax.swing.JDesktopPane escritorio;
+    public javax.swing.JMenu jMenu1;
+    public javax.swing.JMenu jMenu2;
+    public javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblUsuarioActual;
-    private javax.swing.JMenuItem menuItemGestionMenus;
-    private javax.swing.JMenuItem menuItemGestionProvedores;
-    private javax.swing.JMenuItem menuItemGestionUsuarios;
+    public javax.swing.JLabel lblUsuarioActual;
+    public javax.swing.JMenuItem menuDesarolladores;
+    public javax.swing.JMenuItem menuItemGestionMenus;
+    public javax.swing.JMenuItem menuItemGestionProvedores;
+    public javax.swing.JMenuItem menuItemGestionUsuarios;
+    public javax.swing.JMenuItem menuReporteInsumos;
+    public javax.swing.JMenuItem menuReporteVentas;
     // End of variables declaration//GEN-END:variables
 }
