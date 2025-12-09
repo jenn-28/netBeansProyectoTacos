@@ -1,18 +1,22 @@
 package interfaces;
 
+import controlador.CtrlMenuCajero;
 import proyectotaqueria.ProyectoTaqueria;
 
 public class MenuCajero extends javax.swing.JFrame {
+    private CtrlMenuCajero menuCajero;
+
 
     public MenuCajero() {
         initComponents();
         setIconImage(ProyectoTaqueria.getAppIcon());
-
+        menuCajero = new CtrlMenuCajero(this);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         escritorio = new javax.swing.JDesktopPane();
@@ -176,7 +180,7 @@ public class MenuCajero extends javax.swing.JFrame {
     public javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblUsuarioActual;
+    public javax.swing.JLabel lblUsuarioActual;
     public javax.swing.JMenuItem menuCobrarMesa;
     public javax.swing.JMenuItem menuCorteCaja;
     public javax.swing.JMenuItem menuDesarolladores;

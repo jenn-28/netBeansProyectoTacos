@@ -1,11 +1,14 @@
 package interfaces;
 
+import controlador.CtrlInsumos;
 import javax.swing.JButton;
 
 public class Inventario extends javax.swing.JInternalFrame {
+    private CtrlInsumos controlador;
 
     public Inventario() {
         initComponents();
+        controlador = new CtrlInsumos(this);
     }
 
 

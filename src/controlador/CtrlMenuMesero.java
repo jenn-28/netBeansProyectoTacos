@@ -11,6 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import servicios.SrvUsuario;
 
 public class CtrlMenuMesero implements ActionListener{
     private MenuMesero vista;
@@ -49,6 +50,9 @@ public class CtrlMenuMesero implements ActionListener{
         
         // Configuración de ventana
         this.vista.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+
+        var usuario = SrvUsuario.getUsuario();
+        vista.lblUsuarioActual.setText(usuario.getNombre());
     }
     
     
