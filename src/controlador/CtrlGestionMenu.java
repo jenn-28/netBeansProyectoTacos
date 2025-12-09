@@ -5,6 +5,7 @@
 package controlador;
 
 import interfaces.GestionMenu;
+import java.awt.AWTEventMulticaster;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -106,7 +107,44 @@ public class CtrlGestionMenu
             }
         });
 
+        vista.btnEliminar.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                var nombre = vista.txtNombreProducto.getText();
+                if (nombre == null || nombre.isEmpty()) {
+                    JOptionPane.showMessageDialog(vista, "Ingrese el nombre del producto");
+                    return;
+                }
+
+                var productoIdx = AlmacenDatos.listaProductos.buscar(p -> p.getNombre().equals(nombre));
+
+                if (productoIdx == null) {
+                    JOptionPane.showMessageDialog(vista, "Producto no encontrado");
+                    return;
+                }
+
+                AlmacenDatos.listaProductos.eliminar(productoIdx);
+
+                llenarTabla();
+
+                limpiarForm();
+
+                JOptionPane.showMessageDialog(vista, "Producto eliminado exitosamente");
+            }
+        });
+
         LOG.log(System.Logger.Level.INFO, "Vista de GestionMenu inicializada correctamente");
+
+        vista.btnLimpiar.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                limpiarForm();
+            }
+        });
     }
 
     private void inicializarTabla()
