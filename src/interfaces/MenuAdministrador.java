@@ -1,13 +1,17 @@
 package interfaces;
 
+import controlador.CtrlMenuAdministrador;
 import proyectotaqueria.ProyectoTaqueria;
 
 public class MenuAdministrador extends javax.swing.JFrame {
+
+    private CtrlMenuAdministrador controlador;
 
     public MenuAdministrador() {
         initComponents();
         setIconImage(ProyectoTaqueria.getAppIcon());
 
+        controlador = new CtrlMenuAdministrador(this);
     }
 
     @SuppressWarnings("unchecked")

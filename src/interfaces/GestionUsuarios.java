@@ -86,12 +86,12 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Roles:");
 
-        btneditar.setBackground(new java.awt.Color(214, 162, 63));
-        btneditar.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        btneditar.setText("Editar");
-        btneditar.setMaximumSize(new java.awt.Dimension(86, 24));
-        btneditar.setMinimumSize(new java.awt.Dimension(86, 24));
-        btneditar.setPreferredSize(new java.awt.Dimension(86, 24));
+        btnEditar.setBackground(new java.awt.Color(214, 162, 63));
+        btnEditar.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        btnEditar.setText("Editar");
+        btnEditar.setMaximumSize(new java.awt.Dimension(86, 24));
+        btnEditar.setMinimumSize(new java.awt.Dimension(86, 24));
+        btnEditar.setPreferredSize(new java.awt.Dimension(86, 24));
 
         btnGuardar.setBackground(new java.awt.Color(214, 162, 63));
         btnGuardar.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
@@ -136,7 +136,7 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
                         .addGap(72, 72, 72)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)
-                        .addComponent(btneditar, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
@@ -214,7 +214,6 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 875, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -223,7 +222,6 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
                 .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)

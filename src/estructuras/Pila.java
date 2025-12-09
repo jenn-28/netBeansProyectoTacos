@@ -1,5 +1,8 @@
 package estructuras;
 
+import java.util.function.Function;
+import java.util.function.Predicate;
+
 public class Pila<T> {
     private Nodo<T> cima;
 
@@ -67,4 +70,5 @@ public class Pila<T> {
         }
         return cont;
     }
+
 }

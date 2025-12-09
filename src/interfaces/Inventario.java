@@ -11,7 +11,8 @@ public class Inventario extends javax.swing.JInternalFrame {
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jLabel3 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -37,7 +38,7 @@ public class Inventario extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         lblStockActual = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        spCantidadMover = new javax.swing.JSpinner();
+        spinnerCantidadMin = new javax.swing.JSpinner();
         jLabel9 = new javax.swing.JLabel();
         cmbTipoMovimiento = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -72,8 +73,10 @@ public class Inventario extends javax.swing.JInternalFrame {
         jLabel4.setText("Stock inicial:");
 
         txtCantidadMinima.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtCantidadMinima.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+        txtCantidadMinima.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyTyped(java.awt.event.KeyEvent evt)
+            {
                 txtCantidadMinimaKeyTyped(evt);
             }
         });
@@ -82,13 +85,15 @@ public class Inventario extends javax.swing.JInternalFrame {
         jLabel5.setText("Insumos Existentes:");
 
         tblInsumos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String [] {
+            new String []
+            {
                 "Insumos", "Unidad", "Cantidad", "Cantidad Mínima"
             }
         ));
@@ -105,11 +110,6 @@ public class Inventario extends javax.swing.JInternalFrame {
         btnGuardar.setBackground(new java.awt.Color(214, 162, 63));
         btnGuardar.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
 
         btnSalir.setBackground(new java.awt.Color(214, 162, 63));
         btnSalir.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
@@ -197,7 +197,8 @@ public class Inventario extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(224, 210, 193));
 
         listInsumos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        listInsumos.setModel(new javax.swing.AbstractListModel<String>() {
+        listInsumos.setModel(new javax.swing.AbstractListModel<String>()
+        {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
@@ -258,7 +259,7 @@ public class Inventario extends javax.swing.JInternalFrame {
                                 .addGap(49, 49, 49)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                                .addComponent(spCantidadMover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(spinnerCantidadMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(82, 82, 82))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
@@ -280,7 +281,7 @@ public class Inventario extends javax.swing.JInternalFrame {
                             .addComponent(jLabel6)
                             .addComponent(lblStockActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)
-                            .addComponent(spCantidadMover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(spinnerCantidadMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(64, 64, 64)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
@@ -324,14 +325,14 @@ public class Inventario extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnRegistrarMovimiento;
-    private javax.swing.JButton btnSalir;
-    private javax.swing.JButton btnVerMoviminetos;
-    private javax.swing.JComboBox<String> cmbTipoMovimiento;
-    private javax.swing.JComboBox<String> cmbUnidad;
+    public javax.swing.JButton btnEliminar;
+    public javax.swing.JButton btnGuardar;
+    public javax.swing.JButton btnModificar;
+    public javax.swing.JButton btnRegistrarMovimiento;
+    public javax.swing.JButton btnSalir;
+    public javax.swing.JButton btnVerMoviminetos;
+    public javax.swing.JComboBox<String> cmbTipoMovimiento;
+    public javax.swing.JComboBox<String> cmbUnidad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -349,11 +350,11 @@ public class Inventario extends javax.swing.JInternalFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     public javax.swing.JLabel lblStockActual;
     public javax.swing.JList<String> listInsumos;
-    public javax.swing.JSpinner spCantidadMover;
+    private javax.swing.JSpinner spinnerCantidadMin;
     public javax.swing.JTable tblInsumos;
     public javax.swing.JTextArea txtArea;
     public javax.swing.JTextField txtCantidadInicial;
-    public javax.swing.JTextField txtCantidadMinima;
+    private javax.swing.JTextField txtCantidadMinima;
     public javax.swing.JTextField txtInsumos;
     // End of variables declaration//GEN-END:variables
 }
