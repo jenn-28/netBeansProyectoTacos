@@ -4,17 +4,21 @@
  */
 package interfaces;
 
+import controlador.CtrlGestionMenu;
+
 /**
  *
  * @author Asus
  */
 public class GestionMenu extends javax.swing.JInternalFrame {
+    private CtrlGestionMenu controlador;
 
     /**
      * Creates new form GestionMenu
      */
     public GestionMenu() {
         initComponents();
+        controlador = new CtrlGestionMenu(this);
     }
 
     /**

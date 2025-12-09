@@ -55,6 +55,7 @@ public class CtrlGestionMenu
             public void keyReleased(KeyEvent e)
             {
             }
+
         });
 
         vista.btnGuardar.addActionListener(new ActionListener() {
@@ -88,11 +89,11 @@ public class CtrlGestionMenu
 
                 AlmacenDatos.listaProductos.agregar(producto);
 
-                LOG.log(System.Logger.Level.ALL, "Producto agregado exitosamente: {0}", producto);
+                LOG.log(System.Logger.Level.INFO, "Producto agregado exitosamente: {0}", producto);
             }
         });
+
+        LOG.log(System.Logger.Level.INFO, "Vista de GestionMenu inicializada correctamente");
     }
 
-
-    
 }
