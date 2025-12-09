@@ -24,7 +24,8 @@ public class GestionMenu extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -64,6 +65,13 @@ public class GestionMenu extends javax.swing.JInternalFrame {
 
         cmbProductos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbProductos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tacos", "Lonches", "Bebidas", "Dulces" }));
+        cmbProductos.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                cmbProductosActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setText("Categoria:");
@@ -116,7 +124,7 @@ public class GestionMenu extends javax.swing.JInternalFrame {
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
                         .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,21 +155,26 @@ public class GestionMenu extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(224, 210, 193));
 
         tableMostrarMenu.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null}
             },
-            new String [] {
+            new String []
+            {
                 "Nombre del Producto", "Precio", "Categoria"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
                 false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
@@ -202,13 +215,18 @@ public class GestionMenu extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cmbProductosActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbProductosActionPerformed
+    {//GEN-HEADEREND:event_cmbProductosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbProductosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnLimpiar;
-    private javax.swing.JComboBox<String> cmbProductos;
+    public javax.swing.JButton btnEditar;
+    public javax.swing.JButton btnEliminar;
+    public javax.swing.JButton btnGuardar;
+    public javax.swing.JButton btnLimpiar;
+    public javax.swing.JComboBox<String> cmbProductos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -217,7 +235,7 @@ public class GestionMenu extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable tableMostrarMenu;
-    private javax.swing.JTextField txtNombreProducto;
-    private javax.swing.JTextField txtPrecio;
+    public javax.swing.JTextField txtNombreProducto;
+    public javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 }
