@@ -11,7 +11,6 @@ public class AlmacenDatos {
     public static ListaEnlazada<Usuario> listaUsuarios = new ListaEnlazada();
     public static ListaEnlazada<Producto> listaProductos = new ListaEnlazada();
     
-    
     static {
         listaUsuarios.agregar(new Administrador("SYSTEM ROOT", "admin","777"));
         listaUsuarios.agregar(new Cajero("Carlos", "carlos","777"));
