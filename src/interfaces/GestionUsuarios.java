@@ -24,14 +24,13 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         cmbRoles = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        btneditar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableMostrarUsuarios = new javax.swing.JTable();
-        btnRegresar = new javax.swing.JLabel();
 
         setTitle("Gestión de Usuarios");
 
@@ -165,7 +164,7 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
                     .addComponent(cmbRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(89, 89, 89)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btneditar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -206,9 +205,6 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane1.setViewportView(tableMostrarUsuarios);
-
-        btnRegresar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/deshacer.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -280,12 +276,11 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnLimpiar;
-    private javax.swing.JLabel btnRegresar;
-    private javax.swing.JButton btneditar;
-    private javax.swing.JComboBox<String> cmbRoles;
+    public javax.swing.JButton btnEditar;
+    public javax.swing.JButton btnEliminar;
+    public javax.swing.JButton btnGuardar;
+    public javax.swing.JButton btnLimpiar;
+    public javax.swing.JComboBox<String> cmbRoles;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -294,9 +289,9 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable tableMostrarUsuarios;
-    private javax.swing.JTextField txtNombreTrabajador;
-    private javax.swing.JTextField txtPassword;
-    private javax.swing.JTextField txtUsuario;
+    public javax.swing.JTable tableMostrarUsuarios;
+    public javax.swing.JTextField txtNombreTrabajador;
+    public javax.swing.JTextField txtPassword;
+    public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

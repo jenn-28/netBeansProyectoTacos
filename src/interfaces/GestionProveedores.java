@@ -29,7 +29,6 @@ public class GestionProveedores extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableProveedores = new javax.swing.JTable();
-        btnVolver = new javax.swing.JLabel();
 
         setTitle("Gestión Proveedores");
 
@@ -160,9 +159,6 @@ public class GestionProveedores extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tableProveedores);
 
-        btnVolver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/deshacer.png"))); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -243,12 +239,11 @@ public class GestionProveedores extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnLimpiar;
-    private javax.swing.JLabel btnVolver;
-    private javax.swing.JComboBox<String> cmbProducto;
+    public javax.swing.JButton btnEditar;
+    public javax.swing.JButton btnEliminar;
+    public javax.swing.JButton btnGuardar;
+    public javax.swing.JButton btnLimpiar;
+    public javax.swing.JComboBox<String> cmbProducto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -256,8 +251,8 @@ public class GestionProveedores extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable tableProveedores;
-    private javax.swing.JTextField txtNombreEmpresa;
-    private javax.swing.JTextField txtTelefono;
+    public javax.swing.JTable tableProveedores;
+    public javax.swing.JTextField txtNombreEmpresa;
+    public javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

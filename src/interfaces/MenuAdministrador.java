@@ -25,10 +25,10 @@ public class MenuAdministrador extends javax.swing.JFrame {
         menuItemGestionMenus = new javax.swing.JMenuItem();
         menuItemGestionProvedores = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        menuReporteVentas = new javax.swing.JMenuItem();
+        menuReporteInsumos = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        menuDesarolladores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tacos y Lonches Pancho");
@@ -119,13 +119,13 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jMenu2.setText("       Reportes       ");
         jMenu2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
-        jMenuItem4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem4.setText("Reporte Ventas");
-        jMenu2.add(jMenuItem4);
+        menuReporteVentas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menuReporteVentas.setText("Reporte Ventas");
+        jMenu2.add(menuReporteVentas);
 
-        jMenuItem5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem5.setText("Reporte Insumos");
-        jMenu2.add(jMenuItem5);
+        menuReporteInsumos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menuReporteInsumos.setText("Reporte Insumos");
+        jMenu2.add(menuReporteInsumos);
 
         jMenuBar1.add(jMenu2);
 
@@ -134,9 +134,9 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jMenu3.setText("       Acerca de       ");
         jMenu3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
-        jMenuItem6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem6.setText("Desarrolladores");
-        jMenu3.add(jMenuItem6);
+        menuDesarolladores.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menuDesarolladores.setText("Desarrolladores");
+        jMenu3.add(menuDesarolladores);
 
         jMenuBar1.add(jMenu3);
 
@@ -161,11 +161,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        /* Configuración del diseño (Look and Feel) */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -173,21 +169,15 @@ public class MenuAdministrador extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuAdministrador().setVisible(true);
+                MenuAdministrador vista = new MenuAdministrador();
+                controlador.CtrlMenuAdministrador ctrl = new controlador.CtrlMenuAdministrador(vista);
+                
+                vista.setVisible(true);
             }
         });
     }
@@ -200,13 +190,13 @@ public class MenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblUsuarioActual;
-    private javax.swing.JMenuItem menuItemGestionMenus;
-    private javax.swing.JMenuItem menuItemGestionProvedores;
-    private javax.swing.JMenuItem menuItemGestionUsuarios;
+    public javax.swing.JLabel lblUsuarioActual;
+    public javax.swing.JMenuItem menuDesarolladores;
+    public javax.swing.JMenuItem menuItemGestionMenus;
+    public javax.swing.JMenuItem menuItemGestionProvedores;
+    public javax.swing.JMenuItem menuItemGestionUsuarios;
+    public javax.swing.JMenuItem menuReporteInsumos;
+    public javax.swing.JMenuItem menuReporteVentas;
     // End of variables declaration//GEN-END:variables
 }
