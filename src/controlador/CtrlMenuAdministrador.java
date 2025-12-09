@@ -10,6 +10,8 @@ import interfaces.ReporteMovimientos;
 import interfaces.ReporteVentas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
@@ -35,7 +37,26 @@ public class CtrlMenuAdministrador implements ActionListener{
         this.vista.menuDesarolladores.addActionListener(this);
         
         //Acciones
+        // 1. Botón REGRESAR
+        this.vista.btnRegresar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                regresar();
+            }
+        });
+        // Poner manita al pasar el mouse
+        this.vista.btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        // 2. Botón CANCELAR
+        this.vista.btnCancelar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                cancelarSesion();
+            }
+        });
+        this.vista.btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         
+        // Configuración de ventana
         this.vista.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
     
@@ -44,34 +65,36 @@ public class CtrlMenuAdministrador implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        //Administración
+        // Administración
         if(e.getSource() == vista.menuItemGestionUsuarios){
-            navegarA(new GestionUsuarios());
+            GestionUsuarios v = new GestionUsuarios();    
+            new controlador.CtrlUsuarios(v);                
+            navegarA(v);
         }
         if(e.getSource() == vista.menuItemGestionProvedores){
-            navegarA(new GestionProveedores());
+            GestionProveedores v = new GestionProveedores();
+            new controlador.CtrlProveedor(v);                
+            navegarA(v);
         }
         if(e.getSource() == vista.menuItemGestionMenus){
-            navegarA(new GestionMenu());
+            GestionMenu v = new GestionMenu();
+            //new controlador.CtrlProductos(v);
+            navegarA(v);
         }
         
-        //Reportes
+        // Reportes
         if(e.getSource() == vista.menuReporteVentas){
-            navegarA(new ReporteVentas());
+            ReporteVentas v = new ReporteVentas();
+            //new controlador.CtrlCorteCaja(v);
+            navegarA(v);
         }
         if(e.getSource() == vista.menuReporteInsumos){
-            navegarA(new ReporteMovimientos());
+            ReporteMovimientos v = new ReporteMovimientos();
+            // new controlador.CtrlMovimientos(v);
+            navegarA(v);
         }
         
-        //Acciones
-        if(e.getSource() == vista.btnRegresar){
-            regresar();
-        }
-        if(e.getSource() == vista.btnCancelar){
-            cancelarSesion();
-        }
-        
-        //Acerca de
+        // Acerca de
         if(e.getSource() == vista.menuDesarolladores){
             mostrarCreditos();
         }
@@ -80,7 +103,7 @@ public class CtrlMenuAdministrador implements ActionListener{
     public void navegarA(JInternalFrame nuevaVentana){
         if (!historial.estaVacia()){
             JInternalFrame actual = historial.peek();
-            actual.setVisible(true);
+            actual.setVisible(false);
         }
         
         //poner en el desktopPane
@@ -123,7 +146,7 @@ public class CtrlMenuAdministrador implements ActionListener{
     
     private void mostrarCreditos() {
         String mensaje = "<html><body style='width: 250px; text-align: center;'>"
-                + "<h2 style='color: #003366;'>✨ Equipo de Desarrollo ✨</h2>"
+                + "<h2 style='color: #003366;'> Equipo de Desarrollo </h2>"
                 + "<hr>"
                 + "<br>"
                 
