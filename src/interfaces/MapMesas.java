@@ -8,7 +8,7 @@ package interfaces;
  *
  * @author USUARIO
  */
-public class MapMesas extends javax.swing.JInternalFrame {
+public class MapMesas extends javax.swing.JFrame {
 
     /**
      * Creates new form MapMesas
@@ -50,10 +50,12 @@ public class MapMesas extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        //Agregar el numero de mesas libres en vez de X
         jLabel1.setText("Mesas libres: X");
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        //Agregar el numero de Mesas Ocupadas
         jLabel2.setText("Mesas Ocupadas: X");
 
         jButton1.setBackground(new java.awt.Color(102, 204, 0));
