@@ -22,8 +22,7 @@ public class Producto
 
     public static final String[] categorias = new String[]{
         CATEGORIA_TACOS, CATEGORIA_LONCHES,
-        CATEGORIA_BEBIDA, CATEGORIA_DULCE,
-    };
+        CATEGORIA_BEBIDA, CATEGORIA_DULCE,};
 
     public Producto(String nombre, String categoria, float precio)
     {
@@ -56,10 +55,13 @@ public class Producto
      * Get the value of categoria
      *
      * @return the value of categoria
-     *
-     * public String getCategoria() { return categoria; }
-     *
-     * /**
+     */
+    public String getCategoria()
+    {
+        return categoria;
+    }
+
+    /**
      * Set the value of categoria
      *
      * @param categoria new value of categoria
@@ -94,7 +96,5 @@ public class Producto
     {
         return "Producto{" + "nombre=" + nombre + ", categoria=" + categoria + ", precio=" + precio + '}';
     }
-
-
 
 }
