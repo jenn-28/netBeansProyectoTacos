@@ -4,12 +4,15 @@ import estructuras.ListaEnlazada;
 import estructuras.Pila;
 
 public class AlmacenDatos {
+    //obtener usuario logeado
+    public static Usuario usuarioLogueado = null;
+    
     //LISTAS GLOBALES (Simulan una base de datos)
     public static ListaEnlazada<Insumo> listaInsumos = new ListaEnlazada<>();
     public static ListaEnlazada<Movimiento> historialMovimientos = new ListaEnlazada<>();
     public static ListaEnlazada<Proveedor> listaProveedores = new ListaEnlazada<>();
-    public static ListaEnlazada<Usuario> listaUsuarios = new ListaEnlazada();
-    public static ListaEnlazada<Producto> listaProductos = new ListaEnlazada();
+    public static ListaEnlazada<Usuario> listaUsuarios = new ListaEnlazada<>();
+    public static ListaEnlazada<Producto> listaProductos = new ListaEnlazada<>();
     
     static {
         listaUsuarios.agregar(new Administrador("SYSTEM ROOT", "admin","777"));

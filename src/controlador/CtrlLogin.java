@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
+import modelo.AlmacenDatos;
 import servicios.SrvUsuario;
 
 /*
@@ -67,14 +68,17 @@ public class CtrlLogin
 
                 if (SrvUsuario.esAdministrador()) {
                     LOG.log(System.Logger.Level.INFO, "Ingresando como administrador");
+                    AlmacenDatos.usuarioLogueado = usuario;
                     new interfaces.MenuAdministrador().setVisible(true);
                     vista.dispose();
                 } else if (SrvUsuario.esCajero()) {
                     LOG.log(System.Logger.Level.INFO, "Ingresando como cajero");
+                    AlmacenDatos.usuarioLogueado = usuario;
                     new interfaces.MenuCajero().setVisible(true);
                     vista.dispose();
                 } else if (SrvUsuario.esMesero()) {
                     LOG.log(System.Logger.Level.INFO, "Ingresando como mesero");
+                    AlmacenDatos.usuarioLogueado = usuario;
                     new interfaces.MenuMesero().setVisible(true);
                     vista.dispose();
                 }
