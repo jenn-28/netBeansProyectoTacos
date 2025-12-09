@@ -32,7 +32,7 @@ public class Inventario extends javax.swing.JInternalFrame {
         txtCantidadInicial = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        listInsumos = new javax.swing.JList<>();
+        lstInsumos = new javax.swing.JList<>();
         jLabel6 = new javax.swing.JLabel();
         lblStockActual = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -40,7 +40,7 @@ public class Inventario extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         cmbTipoMovimiento = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
-        txtArea = new javax.swing.JTextArea();
+        txtNotas = new javax.swing.JTextArea();
         btnRegistrarMov = new javax.swing.JButton();
         btnVerMov = new javax.swing.JButton();
 
@@ -53,7 +53,7 @@ public class Inventario extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Insumos: ");
+        jLabel1.setText("Insumo: ");
 
         txtInsumos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
@@ -179,12 +179,12 @@ public class Inventario extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(224, 210, 193));
 
-        listInsumos.setModel(new javax.swing.AbstractListModel<String>() {
+        lstInsumos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(listInsumos);
+        jScrollPane2.setViewportView(lstInsumos);
 
         jLabel6.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         jLabel6.setText("Stock Actual: ");
@@ -202,9 +202,9 @@ public class Inventario extends javax.swing.JInternalFrame {
         cmbTipoMovimiento.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         cmbTipoMovimiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrada(Compra)", "Salida(Merma)", "Ajuste" }));
 
-        txtArea.setColumns(20);
-        txtArea.setRows(5);
-        jScrollPane3.setViewportView(txtArea);
+        txtNotas.setColumns(20);
+        txtNotas.setRows(5);
+        jScrollPane3.setViewportView(txtNotas);
 
         btnRegistrarMov.setBackground(new java.awt.Color(214, 162, 63));
         btnRegistrarMov.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
@@ -323,12 +323,12 @@ public class Inventario extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     public javax.swing.JLabel lblStockActual;
-    public javax.swing.JList<String> listInsumos;
+    public javax.swing.JList<String> lstInsumos;
     public javax.swing.JSpinner spCantidadMover;
     public javax.swing.JTable tblInsumos;
-    public javax.swing.JTextArea txtArea;
     public javax.swing.JTextField txtCantidadInicial;
     public javax.swing.JTextField txtCantidadMinima;
     public javax.swing.JTextField txtInsumos;
+    public javax.swing.JTextArea txtNotas;
     // End of variables declaration//GEN-END:variables
 }

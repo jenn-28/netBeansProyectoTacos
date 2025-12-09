@@ -77,6 +77,7 @@ public class CtrlMenuCajero implements ActionListener{
             navegarA(v);
         }
         
+        
         // Acerca de
         if(e.getSource() == vista.menuDesarolladores){
             mostrarCreditos();
