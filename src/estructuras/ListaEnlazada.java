@@ -1,5 +1,8 @@
 package estructuras;
 
+import java.util.function.Function;
+import java.util.function.Predicate;
+
 public class ListaEnlazada<T> {
     
     private Nodo<T> inicio;
@@ -85,5 +88,42 @@ public class ListaEnlazada<T> {
     public void vaciar() {
         inicio = null;
         longitud = 0;
+    }
+
+    
+    public ListaEnlazada<T> filtrar(Predicate<T> predicate)
+    {
+        var res = new ListaEnlazada<T>();
+
+        var aux = inicio;
+        while (aux != null) {
+            var dato = aux.getDato();
+
+            if (dato != null && predicate.test(dato))
+                res.agregar(dato);
+
+            aux = aux.getAptSiguiente();
+        }
+
+        return res;
+    }
+    
+    public <R> ListaEnlazada<R> mapear(Function<T, R> func)
+    {
+        var res = new ListaEnlazada<R>();
+
+        var aux = inicio;
+        while (aux != null) {
+            var dato = aux.getDato();
+
+            if (dato != null) {
+                var mapeado = func.apply(dato);
+                res.agregar(mapeado);
+            }
+
+            aux = aux.getAptSiguiente();
+        }
+
+        return res;
     }
 }

@@ -10,11 +10,12 @@ public class AlmacenDatos {
     public static ListaEnlazada<Proveedor> listaProveedores = new ListaEnlazada<>();
     public static ListaEnlazada<Usuario> listaUsuarios = new ListaEnlazada();
     
-    public static Usuario usuarioLogeado = null;
+    // public static Usuario usuarioLogeado = null;
     
     static {
         Administrador superAdmin = new Administrador("SYSTEM ROOT", "admin","777");
-        listaUsuarios.agregar(usuarioLogeado);
+
+        listaUsuarios.agregar(superAdmin);
         
         System.out.println(">>> Sistema Iniciado. Super Admin activo");
     }
