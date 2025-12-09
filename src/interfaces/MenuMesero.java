@@ -30,17 +30,16 @@ public class MenuMesero extends javax.swing.JFrame {
         btnRegresar = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JLabel();
         lblUsuarioActual = new javax.swing.JLabel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuMapaMesas = new javax.swing.JMenuItem();
+        menuPedidos = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        menuDesarrolladores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tacos y Lonches Pancho");
-        setPreferredSize(new java.awt.Dimension(795, 580));
 
         jPanel1.setBackground(new java.awt.Color(224, 210, 193));
 
@@ -55,17 +54,17 @@ public class MenuMesero extends javax.swing.JFrame {
         lblUsuarioActual.setText("Usuario Actual");
         lblUsuarioActual.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(86, 62, 46)));
 
-        jDesktopPane1.setBackground(new java.awt.Color(224, 210, 193));
-        jDesktopPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("Titulo")));
+        escritorio.setBackground(new java.awt.Color(224, 210, 193));
+        escritorio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("Titulo")));
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1171, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 534, Short.MAX_VALUE)
         );
 
@@ -77,7 +76,7 @@ public class MenuMesero extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(lblUsuarioActual, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -91,7 +90,7 @@ public class MenuMesero extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -107,22 +106,22 @@ public class MenuMesero extends javax.swing.JFrame {
         jMenu1.setText("          Servicio          ");
         jMenu1.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
 
-        jMenuItem1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem1.setText("Mapa de Mesas");
-        jMenu1.add(jMenuItem1);
+        menuMapaMesas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menuMapaMesas.setText("Mapa de Mesas");
+        jMenu1.add(menuMapaMesas);
 
-        jMenuItem2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem2.setText("Pedidos Activos");
-        jMenu1.add(jMenuItem2);
+        menuPedidos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menuPedidos.setText("Pedidos Activos");
+        jMenu1.add(menuPedidos);
 
         jMenuBar1.add(jMenu1);
 
         jMenu3.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         jMenu3.setLabel("          Acerca de          ");
 
-        jMenuItem3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem3.setText("Desarrolladores");
-        jMenu3.add(jMenuItem3);
+        menuDesarrolladores.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menuDesarrolladores.setText("Desarrolladores");
+        jMenu3.add(menuDesarrolladores);
 
         jMenuBar1.add(jMenu3);
 
@@ -147,11 +146,7 @@ public class MenuMesero extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        /* Configuración del diseño (Look and Feel) */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -159,37 +154,30 @@ public class MenuMesero extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuMesero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuMesero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuMesero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuMesero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuMesero().setVisible(true);
+                MenuMesero vista = new MenuMesero();
+                controlador.CtrlMenuMesero ctrl = new controlador.CtrlMenuMesero(vista);
+                
+                vista.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnCancelar;
-    private javax.swing.JLabel btnRegresar;
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu3;
+    public javax.swing.JLabel btnCancelar;
+    public javax.swing.JLabel btnRegresar;
+    public javax.swing.JDesktopPane escritorio;
+    public javax.swing.JMenu jMenu1;
+    public javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblUsuarioActual;
+    public javax.swing.JLabel lblUsuarioActual;
+    public javax.swing.JMenuItem menuDesarrolladores;
+    public javax.swing.JMenuItem menuMapaMesas;
+    public javax.swing.JMenuItem menuPedidos;
     // End of variables declaration//GEN-END:variables
 }
