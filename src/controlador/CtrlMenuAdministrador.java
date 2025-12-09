@@ -107,7 +107,7 @@ public class CtrlMenuAdministrador implements ActionListener{
         }
         
         //poner en el desktopPane
-        vista.escritorio.add(nuevaVentana);
+        vista.destokPaneAdministrador.add(nuevaVentana);
         //guardar en la pila
         historial.push(nuevaVentana);
         //mostrar
@@ -139,8 +139,8 @@ public class CtrlMenuAdministrador implements ActionListener{
     }
     
     private void centrarVentana(JInternalFrame frame) {
-        int x = (vista.escritorio.getWidth() - frame.getWidth()) / 2;
-        int y = (vista.escritorio.getHeight() - frame.getHeight()) / 2;
+        int x = (vista.destokPaneAdministrador.getWidth() - frame.getWidth()) / 2;
+        int y = (vista.destokPaneAdministrador.getHeight() - frame.getHeight()) / 2;
         frame.setLocation(x, y);
     }
     

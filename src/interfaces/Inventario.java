@@ -350,11 +350,11 @@ public class Inventario extends javax.swing.JInternalFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     public javax.swing.JLabel lblStockActual;
     public javax.swing.JList<String> listInsumos;
-    private javax.swing.JSpinner spinnerCantidadMin;
+    public javax.swing.JSpinner spinnerCantidadMin;
     public javax.swing.JTable tblInsumos;
     public javax.swing.JTextArea txtArea;
     public javax.swing.JTextField txtCantidadInicial;
-    private javax.swing.JTextField txtCantidadMinima;
+    public javax.swing.JTextField txtCantidadMinima;
     public javax.swing.JTextField txtInsumos;
     // End of variables declaration//GEN-END:variables
 }

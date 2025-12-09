@@ -26,8 +26,8 @@ public class CtrlInsumos implements ActionListener{
         this.vista.btnModificar.addActionListener(this);//Modificar Minimo
         this.vista.btnSalir.addActionListener(this);
         //ALMACEN
-        this.vista.btnRegistrarMov.addActionListener(this);
-        this.vista.btnVerMov.addActionListener(this);
+        this.vista.btnRegistrarMovimiento.addActionListener(this);
+        this.vista.btnVerMoviminetos.addActionListener(this);
         
         inicializarTabla();
         llenarTabla();
@@ -49,10 +49,10 @@ public class CtrlInsumos implements ActionListener{
             vista.dispose();
         }
         //ALMACÉN
-        if (e.getSource() == vista.btnRegistrarMov) {
+        if (e.getSource() == vista.btnRegistrarMovimiento) {
             registrarMovimiento();
         }
-        if (e.getSource() == vista.btnVerMov) {
+        if (e.getSource() == vista.btnVerMoviminetos) {
             reporteMovimientos();
         }
     }
@@ -124,7 +124,7 @@ public class CtrlInsumos implements ActionListener{
         }
 
         try {
-            double cant = ((Number) vista.spCantidadMover.getValue()).doubleValue();
+            double cant = ((Number) vista.spinnerCantidadMin.getValue()).doubleValue();
             
             // Validación extra: Que no muevan 0 o negativos
             if (cant <= 0) {
@@ -162,7 +162,7 @@ public class CtrlInsumos implements ActionListener{
             llenarTabla();
             
             // Reiniciar el spinner a 0 o 1
-            vista.spCantidadMover.setValue(0); 
+            vista.spinnerCantidadMin.setValue(0); 
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(vista, "Error al leer el spinner: " + e.getMessage());

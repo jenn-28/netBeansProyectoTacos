@@ -16,7 +16,8 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         destokPaneAdministrador = new javax.swing.JDesktopPane();
@@ -40,7 +41,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(224, 210, 193));
 
         destokPaneAdministrador.setBackground(new java.awt.Color(224, 210, 193));
-        destokPaneAdministrador.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Titulo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(86, 62, 46))); // NOI18N
+        destokPaneAdministrador.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Titulo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 0, 13), new java.awt.Color(86, 62, 46))); // NOI18N
 
         javax.swing.GroupLayout destokPaneAdministradorLayout = new javax.swing.GroupLayout(destokPaneAdministrador);
         destokPaneAdministrador.setLayout(destokPaneAdministradorLayout);
@@ -187,12 +188,12 @@ public class MenuAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnCancelar;
-    private javax.swing.JLabel btnRegresar;
-    private javax.swing.JDesktopPane destokPaneAdministrador;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
+    public javax.swing.JLabel btnCancelar;
+    public javax.swing.JLabel btnRegresar;
+    public javax.swing.JDesktopPane destokPaneAdministrador;
+    public javax.swing.JMenu jMenu1;
+    public javax.swing.JMenu jMenu2;
+    public javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JLabel lblUsuarioActual;
