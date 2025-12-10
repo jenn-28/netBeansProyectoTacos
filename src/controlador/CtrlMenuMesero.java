@@ -15,23 +15,17 @@ import servicios.SrvUsuario;
 
 public class CtrlMenuMesero implements ActionListener{
     private MenuMesero vista;
-    private MapMesas mapaMesas;
-    private CtrlMapMesas ctrlMapa;
-    private String usuario;
-
-    //Guardar las ventas abiertas en orden con una pila
     private Pila<JInternalFrame> historial = new Pila<>();
 
     public CtrlMenuMesero(MenuMesero vista) {
         this.vista = vista;
-        usuario = SrvUsuario.getUsuario().toString();
-        vista.lblUsuarioActual.setText(usuario);
+        if(SrvUsuario.getUsuario() != null)
+            vista.lblUsuarioActual.setText(SrvUsuario.getUsuario().getNombre());
         
-        // Servicio: ACTUALIZADOS
+        // Servicio
         this.vista.getJMenuItemMapaMesas().addActionListener(this);
         this.vista.getJMenuItemPedidosActivos().addActionListener(this); 
-
-        // acerca de: ACTUALIZADO
+        // acerca de
         this.vista.getJMenuItemDesarrolladores().addActionListener(this);
 
         // Acciones
@@ -60,24 +54,24 @@ public class CtrlMenuMesero implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Object source = e.getSource(); // Usamos e.getSource() directamente
-        
-        // Caja: ACTUALIZADOS
-        if(source == vista.getJMenuItemMapaMesas()){
-            if(mapaMesas == null){
-                mapaMesas = new MapMesas(); //Crea el JInternal Frame
-                ctrlMapa = new CtrlMapMesas(mapaMesas, vista.escritorio); //conecta lo botones
-            }
-            navegarA(mapaMesas);
-        }
-        if(source == vista.getJMenuItemPedidosActivos()){
-            PedidosActivos v = new PedidosActivos();
+        //ABRIR MAPA DE MESAS
+        if (e.getSource() == vista.getJMenuItemMapaMesas()) {
+            MapMesas v = new MapMesas();
+            // Pasamos el escritorio para que el mapa pueda abrir la comanda ahí mismo
+            new CtrlMapMesas(v, vista.escritorio); 
             navegarA(v);
         }
 
-        // Acerca de: ACTUALIZADO
-        if(source == vista.getJMenuItemDesarrolladores()){
-            mostrarCreditos();
+        //VER PEDIDOS ACTIVOS
+        if (e.getSource() == vista.getJMenuItemPedidosActivos()) {
+            PedidosActivos v = new PedidosActivos();
+            new CtrlPedidosActivos(v); // <--- CREAREMOS ESTE CONTROLADOR ABAJO
+            navegarA(v);
+        }
+
+        //ACERCA DE
+        if (e.getSource() == vista.getJMenuItemDesarrolladores()) {
+            JOptionPane.showMessageDialog(vista, "Proyecto Gestaco 2025");
         }
     }
 

@@ -10,6 +10,7 @@ public class AlmacenDatos {
     public static ListaEnlazada<Proveedor> listaProveedores = new ListaEnlazada<>();
     public static ListaEnlazada<Usuario> listaUsuarios = new ListaEnlazada();
     public static ListaEnlazada<Producto> listaProductos = new ListaEnlazada<>();
+    public static ListaEnlazada<Pedido> pedidosActivos = new ListaEnlazada<>();
     
     public static Pila<Venta> pilaVentas = new Pila<>();
     
