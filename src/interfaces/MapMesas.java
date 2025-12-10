@@ -15,6 +15,12 @@ public class MapMesas extends javax.swing.JInternalFrame {
      */
     public MapMesas() {
         initComponents();
+        this.setClosable(true);
+        this.setIconifiable(true);
+        this.setMaximizable(true);
+        this.setResizable(true);
+        this.setTitle("Mapa de Mesas"); // opcional
+        this.setSize(900, 600); // RECOMENDADO: darle tamaño
     }
 
     /**
@@ -50,10 +56,12 @@ public class MapMesas extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        //Agregar el numero de mesas libres en vez de X
         jLabel1.setText("Mesas libres: X");
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        //Agregar el numero de Mesas Ocupadas
         jLabel2.setText("Mesas Ocupadas: X");
 
         jButton1.setBackground(new java.awt.Color(102, 204, 0));
@@ -187,6 +195,23 @@ public class MapMesas extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public java.util.List<javax.swing.JToggleButton> getBotonesMesas(){
+        return java.util.Arrays.asList(
+            jToggleButton1,
+            jToggleButton2,
+            jToggleButton3,
+            jToggleButton4,
+            jToggleButton5,
+            jToggleButton6,
+            jToggleButton7,
+            jToggleButton8,
+            jToggleButton9,
+            jToggleButton10,
+            jToggleButton11,
+            jToggleButton12
+        );
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
