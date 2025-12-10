@@ -11,11 +11,14 @@ public class AlmacenDatos {
     public static ListaEnlazada<Usuario> listaUsuarios = new ListaEnlazada();
     public static ListaEnlazada<Producto> listaProductos = new ListaEnlazada<>();
     
-    //public static Usuario usuarioLogeado = null;
+    public static Pila<Venta> pilaVentas = new Pila<>();
+    
+    public static Pedido pedidoTemporal = null;
     
     static {
-        Administrador superAdmin = new Administrador("SYSTEM ROOT", "admin","777");
-        listaUsuarios.agregar(superAdmin);
+        listaUsuarios.agregar(new Administrador("SYSTEM ROOT", "admin", "777"));
+        listaUsuarios.agregar(new Cajero("Carlos Cajero", "caja", "123"));
+        listaUsuarios.agregar(new Mesero("Pedro Mesero", "mesa", "123"));
         
         System.out.println(">>> Sistema Iniciado. Super Admin activo");
         //Productos falsos para probar
