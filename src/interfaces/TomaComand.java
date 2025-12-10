@@ -14,7 +14,7 @@ public class TomaComand extends javax.swing.JInternalFrame {
      * Creates new form TomaComand
      */
     public TomaComand(int numeroMesa) {
-        initComponents(numeroMesa);
+        initComponents();
         this.setTitle("Tomar Comanda - Mesa "+ numeroMesa);
         this.setClosable(true);
         this.setIconifiable(true);
@@ -29,7 +29,7 @@ public class TomaComand extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents(int numeroMesa) {
+    private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         btnTacos = new javax.swing.JButton();
@@ -67,12 +67,11 @@ public class TomaComand extends javax.swing.JInternalFrame {
         btnBebidas.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         btnBebidas.setText("Bebidas");
 
-        jlistProductos.setModel(new javax.swing.AbstractListModel<String>() {
+        jlistProductos.setModel(new javax.swing.AbstractListModel<Object>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
-
         jScrollPane1.setViewportView(jlistProductos);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -164,7 +163,7 @@ public class TomaComand extends javax.swing.JInternalFrame {
         jLabel4.setText("Comanda Actual");
 
         lblMesa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblMesa.setText("Comanda Mesa #"+numeroMesa);
+        lblMesa.setText("Comanda Mesa #0");
 
         tableComanda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -266,28 +265,28 @@ public class TomaComand extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAcocina;
-    private javax.swing.JButton btnBebidas;
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton btnLonches;
-    private javax.swing.JButton btnTacos;
+    public javax.swing.JButton btnAcocina;
+    public javax.swing.JButton btnBebidas;
+    public javax.swing.JButton btnEliminar;
+    public javax.swing.JButton btnLimpiar;
+    public javax.swing.JButton btnLonches;
+    public javax.swing.JButton btnTacos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JList<String> jlistProductos;
-    private javax.swing.JLabel lblMesa;
-    private javax.swing.JLabel lblProductoSeleccionado;
-    private javax.swing.JLabel lblTotal;
-    private javax.swing.JSpinner spinerCantidad;
-    private javax.swing.JTable tableComanda;
-    private javax.swing.JTextArea txANotas;
+    public javax.swing.JList<Object> jlistProductos;
+    public javax.swing.JLabel lblMesa;
+    public javax.swing.JLabel lblProductoSeleccionado;
+    public javax.swing.JLabel lblTotal;
+    public javax.swing.JSpinner spinerCantidad;
+    public javax.swing.JTable tableComanda;
+    public javax.swing.JTextArea txANotas;
     // End of variables declaration//GEN-END:variables
 }

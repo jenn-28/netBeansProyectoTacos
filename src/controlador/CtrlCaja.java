@@ -118,7 +118,7 @@ public class CtrlCaja implements ActionListener {
         vista.cmbMesas.addItem("Seleccione Mesa");
         
         if (AlmacenDatos.pedidoTemporal != null && !AlmacenDatos.pedidoTemporal.isPagado()) {
-            vista.cmbMesas.addItem("Mesa 0 (Ocupada)");
+            vista.cmbMesas.addItem("Mesa 1 (Ocupada)");
         }
     }
 
@@ -130,7 +130,7 @@ public class CtrlCaja implements ActionListener {
             return;
         }
 
-        if (seleccion.contains("Mesa 0") && AlmacenDatos.pedidoTemporal != null) {
+        if (seleccion.contains("Mesa 1") && AlmacenDatos.pedidoTemporal != null) {
             modeloTabla.setRowCount(0);
             for (int i = 0; i < AlmacenDatos.pedidoTemporal.getDetalles().getTamanio(); i++) {
                 DetallePedido dp = AlmacenDatos.pedidoTemporal.getDetalles().obtener(i);
@@ -197,7 +197,7 @@ public class CtrlCaja implements ActionListener {
                 p.agregarDetalle(new DetallePedido(AlmacenDatos.listaProductos.obtener(0), 2, "Con todo"));
                 p.agregarDetalle(new DetallePedido(AlmacenDatos.listaProductos.obtener(1), 1, "Fria"));
                 AlmacenDatos.pedidoTemporal = p;
-                System.out.println(">>> Pedido de prueba creado automáticamente en Mesa 0.");
+                System.out.println(">>> Pedido de prueba creado automáticamente en Mesa 1.");
             }
         }
     }
