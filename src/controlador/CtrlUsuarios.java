@@ -32,10 +32,18 @@ public class CtrlUsuarios implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       if (e.getSource() == vista.btnGuardar) guardarUsuario();
-       if (e.getSource() == vista.btnEliminar) eliminarUsuario();
-       if (e.getSource() == vista.btnLimpiar) limpiarCampos();
-       if (e.getSource() == vista.btnEditar) editarUsuario();
+        if (e.getSource() == vista.btnGuardar) {
+            guardarUsuario();
+        }
+        if (e.getSource() == vista.btnEliminar) {
+            eliminarUsuario();
+        }
+        if (e.getSource() == vista.btnLimpiar) {
+            limpiarCampos();
+        }
+        if (e.getSource() == vista.btnEditar) {
+            editarUsuario();
+        }
     }
     
     private void guardarUsuario(){
