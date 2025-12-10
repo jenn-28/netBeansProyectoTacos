@@ -97,7 +97,7 @@ public class CtrlMenuAdministrador implements ActionListener{
         }
         if(e.getSource() == vista.menuReporteInsumos){
             ReporteMovimientos v = new ReporteMovimientos();
-            // new controlador.CtrlMovimientos(v);
+            new controlador.CtrlReporteMovimientos(v);
             navegarA(v);
         }
         

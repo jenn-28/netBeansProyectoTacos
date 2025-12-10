@@ -68,15 +68,29 @@ public class CtrlLogin
 
                 if (SrvUsuario.esAdministrador()) {
                     LOG.log(System.Logger.Level.INFO, "Ingresando como administrador");
-                    new interfaces.MenuAdministrador().setVisible(true);
+                    
+                    var menu = new interfaces.MenuAdministrador();
+                    new CtrlMenuAdministrador(menu);
+                    menu.setVisible(true);
+                    
                     vista.dispose();
+                    
                 } else if (SrvUsuario.esCajero()) {
                     LOG.log(System.Logger.Level.INFO, "Ingresando como cajero");
-                    new interfaces.MenuCajero().setVisible(true);
+                    
+                    var menu = new interfaces.MenuCajero();
+                    new CtrlMenuCajero(menu);
+                    menu.setVisible(true);
+                    
                     vista.dispose();
+                    
                 } else if (SrvUsuario.esMesero()) {
                     LOG.log(System.Logger.Level.INFO, "Ingresando como mesero");
-                    new interfaces.MenuMesero().setVisible(true);
+                    
+                    var menu = new interfaces.MenuMesero();
+                    new CtrlMenuMesero(menu);
+                    menu.setVisible(true);
+                    
                     vista.dispose();
                 }
             }

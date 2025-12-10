@@ -3,16 +3,23 @@ package controlador;
 import interfaces.GestionProveedores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.AlmacenDatos;
 import modelo.Insumo;
+import modelo.Producto;
 import modelo.Proveedor;
 
 public class CtrlProveedor implements ActionListener{
     
     private GestionProveedores vista;
     private DefaultTableModel modeloTabla;
+    
+    // Variables de edición
+    private Proveedor _proveedorSeleccionado = null;
+    private Integer _proveedorSeleccionadoIdx = null;
     
     public CtrlProveedor (GestionProveedores vista){
         this.vista = vista;
@@ -22,6 +29,14 @@ public class CtrlProveedor implements ActionListener{
         this.vista.btnEliminar.addActionListener(this);
         this.vista.btnLimpiar.addActionListener(this);//Modificar Minimo
         this.vista.btnEditar.addActionListener(this);
+        
+        // Listener Tabla
+        this.vista.tableProveedores.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                seleccionarProveedorDeTabla();
+            }
+        });
         
         inicializarTabla();
         llenarTabla();
@@ -56,117 +71,96 @@ public class CtrlProveedor implements ActionListener{
     }
     
     private void guardarProveedor(){
-        try{
-            //Validar que se seleccionó algo
-            if(vista.cmbProducto.getSelectedIndex() == 0 || vista.cmbProducto.getSelectedIndex() == -1){
-                JOptionPane.showMessageDialog(vista, "Por favor selecciona qué producto surte.");
-                return;
-            }
-            
-            String nombre = vista.txtNombreEmpresa.getText();
-            String tel = vista.txtTelefono.getText();
-            String producto = vista.cmbProducto.getSelectedItem().toString();
-            
-            //El modelo valida si el teléfono es corto
-            Proveedor nuevo = new Proveedor(nombre, tel, producto);
-            AlmacenDatos.listaProveedores.agregar(nuevo);
-            
-            JOptionPane.showMessageDialog(vista, "Proveedor registrado con éxito.");
-            llenarTabla();
-            limpiarCampos();
-            
-        }catch(IllegalArgumentException ex){
-            JOptionPane.showMessageDialog(vista, ex.getMessage(), "Error de Validación", JOptionPane.WARNING_MESSAGE);
-        }catch (Exception ex) {
-            JOptionPane.showMessageDialog(vista, "Error al guardar: " + ex.getMessage());
-        }
-    }
-    
-    private void eliminarProveedor(){
-        //Obtener lo que escribe el usuario
-        String nombreBuscado = vista.txtNombreEmpresa.getText();
-        String telefonoBuscado = vista.txtTelefono.getText();
-
-        // Validación: Que al menos escriban algo para buscar
-        if (nombreBuscado.isEmpty() && telefonoBuscado.isEmpty()) {
-            JOptionPane.showMessageDialog(vista, "Escribe el Nombre o Teléfono del proveedor a eliminar.");
+        if (_proveedorSeleccionado != null) {
+            JOptionPane.showMessageDialog(vista, "Estás editando. Usa 'Limpiar' primero.");
             return;
         }
 
-        boolean encontrado = false;
+        String nombre = vista.txtNombreEmpresa.getText();
+        String telefono = vista.txtTelefono.getText();
+        String producto = (String) vista.cmbProducto.getSelectedItem();
 
-        //Recorrer la lista buscando coincidencias
-        for (int i = 0; i < AlmacenDatos.listaProveedores.getTamanio(); i++) {
-            Proveedor p = AlmacenDatos.listaProveedores.obtener(i);
+        if (nombre.isEmpty() || telefono.isEmpty()) {
+            JOptionPane.showMessageDialog(vista, "Llena todos los campos.");
+            return;
+        }
 
-            // CONDICIÓN: Coincide el Nombre o el Teléfono
-            if (p.getNombreProveedor().equalsIgnoreCase(nombreBuscado) || p.getTelefono().equals(telefonoBuscado)) {
+        Proveedor nuevo = new Proveedor(nombre, telefono, producto);
+        AlmacenDatos.listaProveedores.agregar(nuevo);
+        
+        JOptionPane.showMessageDialog(vista, "Proveedor guardado.");
+        llenarTabla();
+        limpiarCampos();
+    }
+    
+    private void eliminarProveedor(){
+        if (_proveedorSeleccionadoIdx == null) {
+            JOptionPane.showMessageDialog(vista, "Selecciona un proveedor para eliminar.");
+            return;
+        }
 
-                // Confirmación de seguridad
-                int confirm = JOptionPane.showConfirmDialog(vista, 
-                        "¿Seguro que deseas eliminar a: " + p.getNombreProveedor()+ "?",
-                        "Confirmar Eliminación", 
-                        JOptionPane.YES_NO_OPTION);
-
-                if (confirm == JOptionPane.YES_OPTION) {
-                    AlmacenDatos.listaProveedores.eliminar(i); // ¡Adiós!
-                    encontrado = true;
-                    JOptionPane.showMessageDialog(vista, "Proveedor eliminado.");
-
-                    // Actualizamos tabla y limpiamos
-                    llenarTabla();
-                    limpiarCampos();
-                }
-                break;
-            }
+        int confirm = JOptionPane.showConfirmDialog(vista, "¿Eliminar a " + _proveedorSeleccionado.getNombreProveedor() + "?");
+        if (confirm == JOptionPane.YES_OPTION) {
+            AlmacenDatos.listaProveedores.eliminar(_proveedorSeleccionadoIdx);
+            
+            JOptionPane.showMessageDialog(vista, "Eliminado correctamente.");
+            llenarTabla();
+            limpiarCampos();
         }
     }
     
     private void editarProveedor() {
-        String nombreBuscado = vista.txtNombreEmpresa.getText();
-
-        if (nombreBuscado.isEmpty()) {
-            JOptionPane.showMessageDialog(vista, "Escribe el Nombre exacto del proveedor que quieres editar.");
+        if (_proveedorSeleccionado == null || _proveedorSeleccionadoIdx == null) {
+            JOptionPane.showMessageDialog(vista, "Selecciona un proveedor de la tabla.");
             return;
         }
 
-        boolean encontrado = false;
+        String nombre = vista.txtNombreEmpresa.getText();
+        String telefono = vista.txtTelefono.getText();
+        String producto = (String) vista.cmbProducto.getSelectedItem();
 
-        for (int i = 0; i < AlmacenDatos.listaProveedores.getTamanio(); i++) {
-            Proveedor p = AlmacenDatos.listaProveedores.obtener(i);
-
-            // Buscamos por nombre
-            if (p.getNombreProveedor().equalsIgnoreCase(nombreBuscado)) {
-
-                try {
-                    // ENCONTRADO: Actualizamos sus datos con lo que hay en las cajas
-
-                    //Actualizar teléfono (si escribieron algo nuevo)
-                    String nuevoTel = vista.txtTelefono.getText();
-                    if (!nuevoTel.isEmpty()) {
-                        p.setTelefono(nuevoTel);
-                    }
-
-                    //Actualizar producto
-                    if (vista.cmbProducto.getSelectedIndex() > 0) {
-                       p.setProdcuto(vista.cmbProducto.getSelectedItem().toString());
-                    }
-
-                    JOptionPane.showMessageDialog(vista, "Datos actualizados para: " + p.getNombreProveedor());
-                    encontrado = true;
-
-                    llenarTabla();
-                    limpiarCampos();
-
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(vista, "Error al editar: " + ex.getMessage());
-                }
-                break;
-            }
+        Proveedor actualizado = new Proveedor(nombre, telefono, producto);
+        
+        // Actualizar en lista
+        AlmacenDatos.listaProveedores.actualizar(_proveedorSeleccionadoIdx, actualizado);
+        
+        JOptionPane.showMessageDialog(vista, "Proveedor actualizado.");
+        llenarTabla();
+        limpiarCampos();
+    }
+    
+    private void seleccionarProveedorDeTabla() {
+        int fila = vista.tableProveedores.getSelectedRow();
+        if (fila != -1) {
+            _proveedorSeleccionado = AlmacenDatos.listaProveedores.obtener(fila);
+            _proveedorSeleccionadoIdx = fila;
+            
+            vista.txtNombreEmpresa.setText(_proveedorSeleccionado.getNombreProveedor());
+            vista.txtTelefono.setText(_proveedorSeleccionado.getTelefono());
+            vista.cmbProducto.setSelectedItem(_proveedorSeleccionado.getProdcuto());
         }
+    }
 
-        if (!encontrado) {
-            JOptionPane.showMessageDialog(vista, "No encontré al proveedor '" + nombreBuscado + "'.\nVerifica que el nombre esté escrito igual que en la tabla.");
+    private void limpiarCampos() {
+        vista.txtNombreEmpresa.setText("");
+        vista.txtTelefono.setText("");
+        if(vista.cmbProducto.getItemCount() > 0) vista.cmbProducto.setSelectedIndex(0);
+        
+        _proveedorSeleccionado = null;
+        _proveedorSeleccionadoIdx = null;
+        vista.tableProveedores.clearSelection();
+    }
+    
+    private void cargarComboProductos() {
+        vista.cmbProducto.removeAllItems();
+        // Llenamos el combo con los nombres de los productos que existen en el menú
+        for(int i=0; i<AlmacenDatos.listaProductos.getTamanio(); i++) {
+            Producto p = AlmacenDatos.listaProductos.obtener(i);
+            vista.cmbProducto.addItem(p.getNombre());
+        }
+        // Opción manual si no hay productos
+        if (vista.cmbProducto.getItemCount() == 0) {
+            vista.cmbProducto.addItem("Varios");
         }
     }
     
@@ -182,7 +176,6 @@ public class CtrlProveedor implements ActionListener{
         modeloTabla.setRowCount(0);
         for (int i=0; i<AlmacenDatos.listaProveedores.getTamanio(); i++){
             Proveedor temp = AlmacenDatos.listaProveedores.obtener(i);
-            
             modeloTabla.addRow(new Object[]{
                 temp.getNombreProveedor(),
                 temp.getTelefono(),
@@ -190,10 +183,5 @@ public class CtrlProveedor implements ActionListener{
             });
         }
     }
-    
-    private void limpiarCampos() {
-        vista.txtNombreEmpresa.setText("");
-        vista.txtTelefono.setText("");
-        vista.cmbProducto.setSelectedIndex(0);
-    }
 }
+

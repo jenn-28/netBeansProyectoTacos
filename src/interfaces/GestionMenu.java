@@ -29,8 +29,7 @@ public class GestionMenu extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -46,7 +45,7 @@ public class GestionMenu extends javax.swing.JInternalFrame {
         btnLimpiar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableMostrarMenu = new javax.swing.JTable();
+        tblProductos = new javax.swing.JTable();
 
         setTitle("Gestión de Menú");
         setPreferredSize(new java.awt.Dimension(697, 573));
@@ -152,31 +151,26 @@ public class GestionMenu extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(224, 210, 193));
 
-        tableMostrarMenu.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+        tblProductos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null}
             },
-            new String []
-            {
+            new String [] {
                 "Nombre del Producto", "Precio", "Categoria"
             }
-        )
-        {
-            boolean[] canEdit = new boolean []
-            {
+        ) {
+            boolean[] canEdit = new boolean [] {
                 false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex)
-            {
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tableMostrarMenu);
+        jScrollPane1.setViewportView(tblProductos);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -227,7 +221,7 @@ public class GestionMenu extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    public javax.swing.JTable tableMostrarMenu;
+    public javax.swing.JTable tblProductos;
     public javax.swing.JTextField txtNombreProducto;
     public javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables

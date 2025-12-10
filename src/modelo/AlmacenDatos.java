@@ -34,6 +34,14 @@ public class AlmacenDatos {
 
         var venta = new Venta(pedidoTemporal);
         pilaVentas.push(venta);
+        
+        // 3. INSUMOS (Inventario Inicial) - ¡ESTO PEDISTE!
+        if (listaInsumos.estaVacia()) {
+            // Nombre, Unidad, Stock Inicial, Stock Mínimo
+            listaInsumos.agregar(new Insumo("Carne de Cerdo", "Kg", 10.0, 5.0));
+            listaInsumos.agregar(new Insumo("Tortillas", "Paq", 50.0, 10.0));
+            listaInsumos.agregar(new Insumo("Salsa Roja", "Lt", 5.0, 2.0));
+        }
 
         pedidoTemporal = null;
     }

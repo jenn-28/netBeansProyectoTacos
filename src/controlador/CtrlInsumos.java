@@ -201,21 +201,7 @@ public class CtrlInsumos implements ActionListener, ListSelectionListener {
     // Opción A: Abrir ventana nueva
     private void reporteMovimientos() {
         ReporteMovimientos repVista = new ReporteMovimientos();
-        DefaultTableModel modRep = new DefaultTableModel();
-        
-        modRep.addColumn("Producto");
-        modRep.addColumn("Tipo");
-        modRep.addColumn("Cantidad");
-        modRep.addColumn("Responsable");
-
-        repVista.tblMovimientos.setModel(modRep);
-        
-        for (int i = 0; i < AlmacenDatos.historialMovimientos.getTamanio(); i++) {
-            Movimiento m = AlmacenDatos.historialMovimientos.obtener(i);
-            modRep.addRow(new Object[]{
-                m.getNombreInsumo(), m.getTipo(), m.getCantidad(), m.getResponsable()
-            });
-        }
+        new CtrlReporteMovimientos(repVista); 
         repVista.setVisible(true);
     }
     
