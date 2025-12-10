@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 
 public class CtrlMenuMesero implements ActionListener{
     private MenuMesero vista;
+    private MapMesas mapaMesas;
+    private CtrlMapMesas ctrlMapa;
 
     //Guardar las ventas abiertas en orden con una pila
     private Pila<JInternalFrame> historial = new Pila<>();
@@ -58,8 +60,11 @@ public class CtrlMenuMesero implements ActionListener{
         
         // Caja: ACTUALIZADOS
         if(source == vista.getJMenuItemMapaMesas()){
-            MapMesas v = new MapMesas();
-            navegarA(v);
+            if(mapaMesas == null){
+                mapaMesas = new MapMesas(); //Crea el JInternal Frame
+                ctrlMapa = new CtrlMapMesas(mapaMesas, vista.escritorio); //conecta lo botones
+            }
+            navegarA(mapaMesas);
         }
         if(source == vista.getJMenuItemPedidosActivos()){
             PedidosActivos v = new PedidosActivos();
