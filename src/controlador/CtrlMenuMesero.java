@@ -1,76 +1,142 @@
 package controlador;
 
-import interfaces.MenuMesero;
+import estructuras.Pila;
+import interfaces.Login;
 import interfaces.MapMesas;
+import interfaces.MenuMesero;
+import interfaces.PedidosActivos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 
-public class CtrlMenuMesero implements ActionListener {
-
+public class CtrlMenuMesero implements ActionListener{
     private MenuMesero vista;
+
+    //Guardar las ventas abiertas en orden con una pila
+    private Pila<JInternalFrame> historial = new Pila<>();
 
     public CtrlMenuMesero(MenuMesero vista) {
         this.vista = vista;
-
-        //Listeners 
+        
+        // Servicio: ACTUALIZADOS
         this.vista.getJMenuItemMapaMesas().addActionListener(this);
-        this.vista.getJMenuItemPedidosActivos().addActionListener(this);
+        this.vista.getJMenuItemPedidosActivos().addActionListener(this); 
+
+        // acerca de: ACTUALIZADO
         this.vista.getJMenuItemDesarrolladores().addActionListener(this);
 
-        this.vista.getBtnRegresar().addMouseListener(new MouseAdapter() {
+        // Acciones
+        // 1. Botón REGRESAR: ACTUALIZADO
+        this.vista.getBtnRegresar().addMouseListener(new MouseAdapter() { 
             @Override
             public void mouseClicked(MouseEvent e) {
                 regresar();
             }
         });
+        // Poner manita al pasar el mouse
+        this.vista.getBtnRegresar().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR)); 
 
-        this.vista.getBtnCancelar().addMouseListener(new MouseAdapter() {
+        // 2. Botón CANCELAR: ACTUALIZADO
+        this.vista.getBtnCancelar().addMouseListener(new MouseAdapter() { 
             @Override
             public void mouseClicked(MouseEvent e) {
-                cerrar();
+                cancelarSesion();
             }
         });
+        this.vista.getBtnCancelar().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        // Configuración de ventana
+        this.vista.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        Object source = e.getSource();
-
-        if (source == vista.getJMenuItemMapaMesas()) {
-            System.out.println("Entró a Mapa Mesas");
-            abrirMapaMesas();
+        Object source = e.getSource(); // Usamos e.getSource() directamente
+        
+        // Caja: ACTUALIZADOS
+        if(source == vista.getJMenuItemMapaMesas()){
+            MapMesas v = new MapMesas();
+            navegarA(v);
+        }
+        if(source == vista.getJMenuItemPedidosActivos()){
+            PedidosActivos v = new PedidosActivos();
+            navegarA(v);
         }
 
-        if (source == vista.getJMenuItemPedidosActivos()) {
-            System.out.println("Entró a Pedidos Activos");
-        }
-
-        if (source == vista.getJMenuItemDesarrolladores()) {
-            System.out.println("Entró a Desarrolladores");
+        // Acerca de: ACTUALIZADO
+        if(source == vista.getJMenuItemDesarrolladores()){
+            mostrarCreditos();
         }
     }
 
-    private void abrirMapaMesas() {
-        vista.getDesktopPane().removeAll();
-        vista.getDesktopPane().repaint();
+    public void navegarA(JInternalFrame nuevaVentana){
+        if (!historial.estaVacia()){
+            JInternalFrame actual = historial.peek();
+            actual.setVisible(false);
+        }
 
-        MapMesas mapa = new MapMesas();
-        new CtrlMapMesas(mapa, vista.getDesktopPane());
-
-        vista.getDesktopPane().add(mapa);
-        mapa.setVisible(true);
-        mapa.toFront();
+        //poner en el desktopPane
+        vista.escritorio.add(nuevaVentana);
+        //guardar en la pila
+        historial.push(nuevaVentana);
+        //mostrar
+        centrarVentana(nuevaVentana);
+        nuevaVentana.setVisible(true);
     }
 
-    private void regresar() {
-        System.out.println("Regresar presionado");
-        // TODO Agregar a donde regresaria 
+    private void regresar(){
+        if (historial.estaVacia()) return; 
+
+        //Sacamos la ventana actual y la matamos
+        JInternalFrame actual = historial.pop();
+        actual.dispose(); 
+
+        //Si queda una ventana anterior, la mostramos
+        if (!historial.estaVacia()) {
+            JInternalFrame anterior = historial.peek();
+            anterior.setVisible(true);
+            anterior.toFront();
+        }
     }
 
-    private void cerrar() {
-        System.exit(0);
+    private void cancelarSesion(){
+        int confirm = JOptionPane.showConfirmDialog(vista, "¿Cerrar sesión?");
+        if(confirm == JOptionPane.YES_OPTION){
+            vista.dispose(); //cerrar el menú admin
+            new Login().setVisible(true);
+        }
+    }
+
+    private void centrarVentana(JInternalFrame frame) {
+        int x = (vista.escritorio.getWidth() - frame.getWidth()) / 2;
+        int y = (vista.escritorio.getHeight() - frame.getHeight()) / 2;
+        frame.setLocation(x, y);
+    }
+
+    private void mostrarCreditos() {
+        String mensaje = "<html><body style='width: 250px; text-align: center;'>"
+                + "<h2 style='color: #003366;'> Equipo de Desarrollo </h2>"
+                + "<hr>"
+                + "<br>"
+                + "<b>1. Castro Acosta Jennifer </b><br>"
+                + "<span style='color: gray;'>Reg: 24310145</span><br><br>"
+                + "<b>2. Contreras Monsivais Cynthia Jimena</b><br>"
+                + "<span style='color: gray;'>Reg: 24310144</span><br><br>"
+                + "<b>3. Lima Moreno Alanna Mishel</b><br>"
+                + "<span style='color: gray;'>Reg: 24310192</span><br><br>"
+                + "<b>4. Padilla Martínez Ruy Felipe</b><br>"
+                + "<span style='color: gray;'>Reg: 24310136</span><br><br>"
+                + "<hr>"
+                + "<i>Proyecto Gestaco © 2025</i>"
+                + "</body></html>";
+
+        // Mostramos el mensaje
+        JOptionPane.showMessageDialog(vista, 
+                mensaje, 
+                "Acerca de Nosotros", 
+                JOptionPane.PLAIN_MESSAGE);
     }
 }
