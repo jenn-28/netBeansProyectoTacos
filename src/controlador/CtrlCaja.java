@@ -23,10 +23,10 @@ public class CtrlCaja implements ActionListener {
     public CtrlCaja(CajaCobro vista) {
         this.vista = vista;
         
-        // 1. INICIALIZAR DATOS DE PRUEBA (Para que no salga vacio)
+        //INICIALIZAR DATOS DE PRUEBA
         crearPedidoPrueba();
 
-        // 2. AGRUPAR BOTONES DE PAGO (Para que solo se seleccione uno a la vez)
+        //AGRUPAR BOTONES DE PAGO
         ButtonGroup grupoPago = new ButtonGroup();
         grupoPago.add(vista.rbtnEfectivo);
         grupoPago.add(vista.rbtnTarjeta);
@@ -41,7 +41,7 @@ public class CtrlCaja implements ActionListener {
         this.vista.rbtnEfectivo.addActionListener(this);
         this.vista.rbtnTarjeta.addActionListener(this);
 
-        // 4. LISTENER PARA CALCULAR CAMBIO AUTOMÁTICO
+        //LISTENER PARA CALCULAR CAMBIO AUTOMÁTICO
         this.vista.txtRecibido.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -111,26 +111,26 @@ public class CtrlCaja implements ActionListener {
         }
     }
 
-    // --- LÓGICA PRINCIPAL ---
+    //LÓGICA PRINCIPAL
 
     private void cargarMesasActivas() {
         vista.cmbMesas.removeAllItems();
-        vista.cmbMesas.addItem("- Seleccione Mesa -");
+        vista.cmbMesas.addItem("Seleccione Mesa");
         
         if (AlmacenDatos.pedidoTemporal != null && !AlmacenDatos.pedidoTemporal.isPagado()) {
-            vista.cmbMesas.addItem("Mesa 1 (Ocupada)");
+            vista.cmbMesas.addItem("Mesa 0 (Ocupada)");
         }
     }
 
     private void mostrarPedidoDeMesaSeleccionada() {
         String seleccion = (String) vista.cmbMesas.getSelectedItem();
         
-        if (seleccion == null || seleccion.equals("- Seleccione Mesa -")) {
+        if (seleccion == null || seleccion.equals("Seleccione Mesa")) {
             limpiarTablaYTotal();
             return;
         }
 
-        if (seleccion.contains("Mesa 1") && AlmacenDatos.pedidoTemporal != null) {
+        if (seleccion.contains("Mesa 0") && AlmacenDatos.pedidoTemporal != null) {
             modeloTabla.setRowCount(0);
             for (int i = 0; i < AlmacenDatos.pedidoTemporal.getDetalles().getTamanio(); i++) {
                 DetallePedido dp = AlmacenDatos.pedidoTemporal.getDetalles().obtener(i);
@@ -148,7 +148,7 @@ public class CtrlCaja implements ActionListener {
         String seleccion = (String) vista.cmbMesas.getSelectedItem();
         
         //Validaciones Generales
-        if (seleccion == null || seleccion.equals("- Seleccione Mesa -") || AlmacenDatos.pedidoTemporal == null) {
+        if (seleccion == null || seleccion.equals("Seleccione Mesa") || AlmacenDatos.pedidoTemporal == null) {
             JOptionPane.showMessageDialog(vista, "Selecciona una mesa con cuenta pendiente.");
             return;
         }
@@ -197,7 +197,7 @@ public class CtrlCaja implements ActionListener {
                 p.agregarDetalle(new DetallePedido(AlmacenDatos.listaProductos.obtener(0), 2, "Con todo"));
                 p.agregarDetalle(new DetallePedido(AlmacenDatos.listaProductos.obtener(1), 1, "Fria"));
                 AlmacenDatos.pedidoTemporal = p;
-                System.out.println(">>> Pedido de prueba creado automáticamente en Mesa 1.");
+                System.out.println(">>> Pedido de prueba creado automáticamente en Mesa 0.");
             }
         }
     }
