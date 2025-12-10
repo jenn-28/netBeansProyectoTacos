@@ -1,44 +1,41 @@
 package controlador;
 
 import estructuras.Pila;
-import interfaces.GestionMenu;
-import interfaces.GestionProveedores;
-import interfaces.GestionUsuarios;
+import interfaces.CajaCobro;
+import interfaces.CorteCaja;
+import interfaces.Inventario;
 import interfaces.Login;
-import interfaces.MenuAdministrador;
-import interfaces.ReporteMovimientos;
-import interfaces.ReporteVentas;
+import interfaces.MenuCajero;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import modelo.AlmacenDatos;
 import servicios.SrvUsuario;
 
-public class CtrlMenuAdministrador implements ActionListener{
-    private MenuAdministrador vista;
+public class CtrlMenuCajero implements ActionListener{
+    private MenuCajero vista;
     private String usuario;
     
     //Guardar las ventas abiertas en orden con una pila
     private Pila<JInternalFrame> historial = new Pila<>();
 
-    public CtrlMenuAdministrador(MenuAdministrador vista) {
+    public CtrlMenuCajero(MenuCajero vista) {
         this.vista = vista;
         usuario = SrvUsuario.getUsuario().toString();
         vista.lblUsuarioActual.setText(usuario);
         
-        //Administración
-        this.vista.menuItemGestionUsuarios.addActionListener(this);
-        this.vista.menuItemGestionProvedores.addActionListener(this);
-        this.vista.menuItemGestionMenus.addActionListener(this);
+        //CAJA
+        this.vista.menuCorteCaja.addActionListener(this);
+        this.vista.menuCobrarMesa.addActionListener(this);
         
-        //Reportes
-        this.vista.menuReporteInsumos.addActionListener(this);
-        this.vista.menuReporteVentas.addActionListener(this);
+        //INSUMOS
+        this.vista.menuGestionInsumos.addActionListener(this);
         
-        //Acerca de 
-        this.vista.menuDesarolladores.addActionListener(this);
+        //acerca de
+        this.vista.menuAcercade.addActionListener(this);
         
         //Acciones
         // 1. Botón REGRESAR
@@ -62,47 +59,34 @@ public class CtrlMenuAdministrador implements ActionListener{
         
         // Configuración de ventana
         this.vista.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
-
+        
         var usuario = SrvUsuario.getUsuario();
         vista.lblUsuarioActual.setText(usuario.getNombre());
     }
-    
-    
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        // Administración
-        if(e.getSource() == vista.menuItemGestionUsuarios){
-            GestionUsuarios v = new GestionUsuarios();    
-            new controlador.CtrlUsuarios(v);                
+        //Caja
+        if(e.getSource() == vista.menuCobrarMesa){
+            CajaCobro v = new CajaCobro();    
+            new controlador.CtrlCaja(v);               
             navegarA(v);
         }
-        if(e.getSource() == vista.menuItemGestionProvedores){
-            GestionProveedores v = new GestionProveedores();
-            new controlador.CtrlProveedor(v);                
-            navegarA(v);
-        }
-        if(e.getSource() == vista.menuItemGestionMenus){
-            GestionMenu v = new GestionMenu();
-            // new controlador.CtrlGestionMenur(v);
+        if(e.getSource() == vista.menuCorteCaja){
+            CorteCaja v = new CorteCaja();    
+            new controlador.CtrlCorteCaja(v);
             navegarA(v);
         }
         
-        // Reportes
-        if(e.getSource() == vista.menuReporteVentas){
-            ReporteVentas v = new ReporteVentas();
-            //new controlador.CtrlCorteCaja(v);
-            navegarA(v);
-        }
-        if(e.getSource() == vista.menuReporteInsumos){
-            ReporteMovimientos v = new ReporteMovimientos();
-            // new controlador.CtrlMovimientos(v);
+        //Insumos
+        if(e.getSource() == vista.menuGestionInsumos){
+            Inventario v = new Inventario();    
+            new controlador.CtrlInsumos(v);                
             navegarA(v);
         }
         
         // Acerca de
-        if(e.getSource() == vista.menuDesarolladores){
+        if(e.getSource() == vista.menuAcercade){
             mostrarCreditos();
         }
     }
@@ -114,7 +98,7 @@ public class CtrlMenuAdministrador implements ActionListener{
         }
         
         //poner en el desktopPane
-        vista.destokPaneAdministrador.add(nuevaVentana);
+        vista.escritorio.add(nuevaVentana);
         //guardar en la pila
         historial.push(nuevaVentana);
         //mostrar
@@ -146,8 +130,8 @@ public class CtrlMenuAdministrador implements ActionListener{
     }
     
     private void centrarVentana(JInternalFrame frame) {
-        int x = (vista.destokPaneAdministrador.getWidth() - frame.getWidth()) / 2;
-        int y = (vista.destokPaneAdministrador.getHeight() - frame.getHeight()) / 2;
+        int x = (vista.escritorio.getWidth() - frame.getWidth()) / 2;
+        int y = (vista.escritorio.getHeight() - frame.getHeight()) / 2;
         frame.setLocation(x, y);
     }
     

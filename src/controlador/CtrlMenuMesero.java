@@ -11,17 +11,21 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import servicios.SrvUsuario;
 
 public class CtrlMenuMesero implements ActionListener{
     private MenuMesero vista;
     private MapMesas mapaMesas;
     private CtrlMapMesas ctrlMapa;
+    private String usuario;
 
     //Guardar las ventas abiertas en orden con una pila
     private Pila<JInternalFrame> historial = new Pila<>();
 
     public CtrlMenuMesero(MenuMesero vista) {
         this.vista = vista;
+        usuario = SrvUsuario.getUsuario().toString();
+        vista.lblUsuarioActual.setText(usuario);
         
         // Servicio: ACTUALIZADOS
         this.vista.getJMenuItemMapaMesas().addActionListener(this);

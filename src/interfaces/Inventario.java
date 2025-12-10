@@ -41,7 +41,7 @@ public class Inventario extends javax.swing.JInternalFrame {
         cmbTipoMovimiento = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
-        btnRegistrarMov = new javax.swing.JButton();
+        btnRegistrarMovimiento = new javax.swing.JButton();
         btnVerMov = new javax.swing.JButton();
 
         jLabel3.setText("jLabel3");
@@ -206,9 +206,9 @@ public class Inventario extends javax.swing.JInternalFrame {
         txtArea.setRows(5);
         jScrollPane3.setViewportView(txtArea);
 
-        btnRegistrarMov.setBackground(new java.awt.Color(214, 162, 63));
-        btnRegistrarMov.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        btnRegistrarMov.setText("Registrar Movimiento");
+        btnRegistrarMovimiento.setBackground(new java.awt.Color(214, 162, 63));
+        btnRegistrarMovimiento.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        btnRegistrarMovimiento.setText("Registrar Movimiento");
 
         btnVerMov.setBackground(new java.awt.Color(214, 162, 63));
         btnVerMov.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
@@ -220,7 +220,7 @@ public class Inventario extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRegistrarMov, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRegistrarMovimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnVerMov, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45))
@@ -269,7 +269,7 @@ public class Inventario extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnRegistrarMov, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRegistrarMovimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnVerMov, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(73, 73, 73)
@@ -302,7 +302,7 @@ public class Inventario extends javax.swing.JInternalFrame {
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnGuardar;
     public javax.swing.JButton btnModificar;
-    public javax.swing.JButton btnRegistrarMov;
+    public javax.swing.JButton btnRegistrarMovimiento;
     public javax.swing.JButton btnSalir;
     public javax.swing.JButton btnVerMov;
     public javax.swing.JComboBox<String> cmbTipoMovimiento;
