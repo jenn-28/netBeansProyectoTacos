@@ -15,6 +15,7 @@ public class MenuMesero extends javax.swing.JFrame {
      */
     public MenuMesero() {
         initComponents();
+        new controlador.CtrlMenuMesero(this);  // ← ESTA LÍNEA
     }
 
     /**
@@ -178,6 +179,18 @@ public class MenuMesero extends javax.swing.JFrame {
             }
         });
     }
+
+    public javax.swing.JDesktopPane getDesktopPane(){
+        return jDesktopPane1;
+    }
+
+    public javax.swing.JMenuItem getJMenuItemMapaMesas() { return jMenuItem1; }
+    public javax.swing.JMenuItem getJMenuItemPedidosActivos() { return jMenuItem2; }
+    public javax.swing.JMenuItem getJMenuItemDesarrolladores() { return jMenuItem3; }
+
+    public javax.swing.JLabel getBtnCancelar() { return btnCancelar; }
+    public javax.swing.JLabel getBtnRegresar() { return btnRegresar; }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnCancelar;

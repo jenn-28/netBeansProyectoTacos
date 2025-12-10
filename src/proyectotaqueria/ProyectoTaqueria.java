@@ -13,7 +13,7 @@ public class ProyectoTaqueria {
 
     public static void main(String[] args) {
         // Aquí solo lanzas tu ventana principal
-        new interfaces.Login().setVisible(true);
+        new interfaces.MenuMesero().setVisible(true);
     }
     
 }

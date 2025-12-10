@@ -8,13 +8,19 @@ package interfaces;
  *
  * @author USUARIO
  */
-public class MapMesas extends javax.swing.JFrame {
+public class MapMesas extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form MapMesas
      */
     public MapMesas() {
         initComponents();
+        this.setClosable(true);
+        this.setIconifiable(true);
+        this.setMaximizable(true);
+        this.setResizable(true);
+        this.setTitle("Mapa de Mesas"); // opcional
+        this.setSize(900, 600); // RECOMENDADO: darle tamaño
     }
 
     /**
@@ -66,11 +72,7 @@ public class MapMesas extends javax.swing.JFrame {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/table.png"))); // NOI18N
         jButton2.setText("Mesa Ocupada");
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/deshacer.png"))); // NOI18N
-
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel.png"))); // NOI18N
+        // ? Botones de regreso y quitar, quedaron obsoletos y se eliminaron
 
         jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/table.png"))); // NOI18N
         jToggleButton1.setText("Mesa 1");
@@ -211,6 +213,23 @@ public class MapMesas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public java.util.List<javax.swing.JToggleButton> getBotonesMesas(){
+        return java.util.Arrays.asList(
+            jToggleButton1,
+            jToggleButton2,
+            jToggleButton3,
+            jToggleButton4,
+            jToggleButton5,
+            jToggleButton6,
+            jToggleButton7,
+            jToggleButton8,
+            jToggleButton9,
+            jToggleButton10,
+            jToggleButton11,
+            jToggleButton12
+        );
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
