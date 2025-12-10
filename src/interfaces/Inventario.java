@@ -1,12 +1,16 @@
 package interfaces;
 
+import controlador.CtrlInsumos;
 import javax.swing.JButton;
 
 public class Inventario extends javax.swing.JInternalFrame {
+    private CtrlInsumos controlador;
 
     public Inventario() {
         initComponents();
+        controlador = new CtrlInsumos(this);
     }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -36,15 +40,18 @@ public class Inventario extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         lblStockActual = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        spCantidadMover = new javax.swing.JSpinner();
+        spinnerCantidadMin = new javax.swing.JSpinner();
         jLabel9 = new javax.swing.JLabel();
         cmbTipoMovimiento = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
-        txtArea = new javax.swing.JTextArea();
-        btnRegistrarMov = new javax.swing.JButton();
-        btnVerMov = new javax.swing.JButton();
+        txtNota = new javax.swing.JTextArea();
+        btnRegistrarMovimiento = new javax.swing.JButton();
+        btnVerMoviminetos = new javax.swing.JButton();
 
         jLabel3.setText("jLabel3");
+
+        setMinimumSize(new java.awt.Dimension(1188, 575));
+        setPreferredSize(new java.awt.Dimension(1188, 575));
 
         jTabbedPane1.setBackground(new java.awt.Color(224, 210, 193));
         jTabbedPane1.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
@@ -55,15 +62,24 @@ public class Inventario extends javax.swing.JInternalFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Insumos: ");
 
+        txtInsumos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtInsumos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jLabel2.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         jLabel2.setText("Unidad: ");
 
+        cmbUnidad.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbUnidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kg", "Lts", "Pza", "Paquete" }));
 
         jLabel4.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         jLabel4.setText("Stock inicial:");
+
+        txtCantidadMinima.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtCantidadMinima.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCantidadMinimaKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         jLabel5.setText("Insumos Existentes:");
@@ -81,20 +97,19 @@ public class Inventario extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblInsumos);
 
+        btnModificar.setBackground(new java.awt.Color(214, 162, 63));
         btnModificar.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         btnModificar.setText("Modificar");
 
+        btnEliminar.setBackground(new java.awt.Color(214, 162, 63));
         btnEliminar.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
 
+        btnGuardar.setBackground(new java.awt.Color(214, 162, 63));
         btnGuardar.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
 
+        btnSalir.setBackground(new java.awt.Color(214, 162, 63));
         btnSalir.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         btnSalir.setText("Salir");
 
@@ -112,13 +127,13 @@ public class Inventario extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
-                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(113, 113, 113)
-                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(111, 111, 111)
-                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(101, 101, 101)
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(86, 86, 86)
+                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -129,8 +144,8 @@ public class Inventario extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
+                        .addComponent(txtInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61)
                         .addComponent(jLabel2)
                         .addGap(42, 42, 42)
                         .addComponent(cmbUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -164,21 +179,22 @@ public class Inventario extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 108, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(59, 107, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30))))
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20))))
         );
 
         jTabbedPane1.addTab("          Insumos          ", jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(224, 210, 193));
 
+        listInsumos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         listInsumos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -196,23 +212,25 @@ public class Inventario extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         jLabel8.setText("Cantidad a Mover:");
 
+        spinnerCantidadMin.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
         jLabel9.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         jLabel9.setText("Tipo de Movimiento:");
 
         cmbTipoMovimiento.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         cmbTipoMovimiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrada(Compra)", "Salida(Merma)", "Ajuste" }));
 
-        txtArea.setColumns(20);
-        txtArea.setRows(5);
-        jScrollPane3.setViewportView(txtArea);
+        txtNota.setColumns(20);
+        txtNota.setRows(5);
+        jScrollPane3.setViewportView(txtNota);
 
-        btnRegistrarMov.setBackground(new java.awt.Color(214, 162, 63));
-        btnRegistrarMov.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        btnRegistrarMov.setText("Registrar Movimiento");
+        btnRegistrarMovimiento.setBackground(new java.awt.Color(214, 162, 63));
+        btnRegistrarMovimiento.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        btnRegistrarMovimiento.setText("Registrar Movimiento");
 
-        btnVerMov.setBackground(new java.awt.Color(214, 162, 63));
-        btnVerMov.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        btnVerMov.setText("Ver Movimientos");
+        btnVerMoviminetos.setBackground(new java.awt.Color(214, 162, 63));
+        btnVerMoviminetos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        btnVerMoviminetos.setText("Ver Movimientos");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -220,9 +238,9 @@ public class Inventario extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRegistrarMov, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRegistrarMovimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnVerMov, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnVerMoviminetos, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
@@ -238,11 +256,11 @@ public class Inventario extends javax.swing.JInternalFrame {
                                 .addGap(49, 49, 49)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                                .addComponent(spCantidadMover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(spinnerCantidadMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(82, 82, 82))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
-                                .addGap(37, 37, 37)
+                                .addGap(39, 39, 39)
                                 .addComponent(cmbTipoMovimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -260,21 +278,21 @@ public class Inventario extends javax.swing.JInternalFrame {
                             .addComponent(jLabel6)
                             .addComponent(lblStockActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)
-                            .addComponent(spCantidadMover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(spinnerCantidadMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(64, 64, 64)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(cmbTipoMovimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbTipoMovimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(38, 38, 38)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnRegistrarMov, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnVerMov, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnRegistrarMovimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVerMoviminetos, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("          Almacen          ", jPanel2);
@@ -293,18 +311,23 @@ public class Inventario extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGuardarActionPerformed
+    private void txtCantidadMinimaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadMinimaKeyTyped
+        char c = evt.getKeyChar();
+        if(txtCantidadMinima.getText().length()>4){
+            evt.consume();
+        }else if(!Character.isDigit(c)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCantidadMinimaKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnGuardar;
     public javax.swing.JButton btnModificar;
-    public javax.swing.JButton btnRegistrarMov;
+    public javax.swing.JButton btnRegistrarMovimiento;
     public javax.swing.JButton btnSalir;
-    public javax.swing.JButton btnVerMov;
+    public javax.swing.JButton btnVerMoviminetos;
     public javax.swing.JComboBox<String> cmbTipoMovimiento;
     public javax.swing.JComboBox<String> cmbUnidad;
     private javax.swing.JLabel jLabel1;
@@ -324,11 +347,11 @@ public class Inventario extends javax.swing.JInternalFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     public javax.swing.JLabel lblStockActual;
     public javax.swing.JList<String> listInsumos;
-    public javax.swing.JSpinner spCantidadMover;
+    public javax.swing.JSpinner spinnerCantidadMin;
     public javax.swing.JTable tblInsumos;
-    public javax.swing.JTextArea txtArea;
     public javax.swing.JTextField txtCantidadInicial;
     public javax.swing.JTextField txtCantidadMinima;
     public javax.swing.JTextField txtInsumos;
+    public javax.swing.JTextArea txtNota;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,21 +1,26 @@
 package interfaces;
 
+import controlador.CtrlMenuAdministrador;
 import proyectotaqueria.ProyectoTaqueria;
 
 public class MenuAdministrador extends javax.swing.JFrame {
+
+    private CtrlMenuAdministrador controlador;
 
     public MenuAdministrador() {
         initComponents();
         setIconImage(ProyectoTaqueria.getAppIcon());
 
+        controlador = new CtrlMenuAdministrador(this);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        destokPaneAdministrador = new javax.swing.JDesktopPane();
         lblUsuarioActual = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JLabel();
@@ -25,27 +30,27 @@ public class MenuAdministrador extends javax.swing.JFrame {
         menuItemGestionMenus = new javax.swing.JMenuItem();
         menuItemGestionProvedores = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        menuReporteVentas = new javax.swing.JMenuItem();
+        menuReporteInsumos = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        menuDesarolladores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tacos y Lonches Pancho");
 
         jPanel1.setBackground(new java.awt.Color(224, 210, 193));
 
-        jDesktopPane1.setBackground(new java.awt.Color(224, 210, 193));
-        jDesktopPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Titulo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(86, 62, 46))); // NOI18N
+        destokPaneAdministrador.setBackground(new java.awt.Color(224, 210, 193));
+        destokPaneAdministrador.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Titulo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 0, 13), new java.awt.Color(86, 62, 46))); // NOI18N
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout destokPaneAdministradorLayout = new javax.swing.GroupLayout(destokPaneAdministrador);
+        destokPaneAdministrador.setLayout(destokPaneAdministradorLayout);
+        destokPaneAdministradorLayout.setHorizontalGroup(
+            destokPaneAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1262, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        destokPaneAdministradorLayout.setVerticalGroup(
+            destokPaneAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 552, Short.MAX_VALUE)
         );
 
@@ -68,7 +73,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(destokPaneAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(55, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblUsuarioActual, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -81,8 +86,8 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(66, Short.MAX_VALUE)
+                .addComponent(destokPaneAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -119,13 +124,13 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jMenu2.setText("       Reportes       ");
         jMenu2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
-        jMenuItem4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem4.setText("Reporte Ventas");
-        jMenu2.add(jMenuItem4);
+        menuReporteVentas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menuReporteVentas.setText("Reporte Ventas");
+        jMenu2.add(menuReporteVentas);
 
-        jMenuItem5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem5.setText("Reporte Insumos");
-        jMenu2.add(jMenuItem5);
+        menuReporteInsumos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menuReporteInsumos.setText("Reporte Insumos");
+        jMenu2.add(menuReporteInsumos);
 
         jMenuBar1.add(jMenu2);
 
@@ -134,9 +139,9 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jMenu3.setText("       Acerca de       ");
         jMenu3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
-        jMenuItem6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem6.setText("Desarrolladores");
-        jMenu3.add(jMenuItem6);
+        menuDesarolladores.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menuDesarolladores.setText("Desarrolladores");
+        jMenu3.add(menuDesarolladores);
 
         jMenuBar1.add(jMenu3);
 
@@ -161,11 +166,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        /* Configuración del diseño (Look and Feel) */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -173,40 +174,34 @@ public class MenuAdministrador extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuAdministrador().setVisible(true);
+                MenuAdministrador vista = new MenuAdministrador();
+                controlador.CtrlMenuAdministrador ctrl = new controlador.CtrlMenuAdministrador(vista);
+                
+                vista.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnCancelar;
-    private javax.swing.JLabel btnRegresar;
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
+    public javax.swing.JLabel btnCancelar;
+    public javax.swing.JLabel btnRegresar;
+    public javax.swing.JDesktopPane destokPaneAdministrador;
+    public javax.swing.JMenu jMenu1;
+    public javax.swing.JMenu jMenu2;
+    public javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblUsuarioActual;
-    private javax.swing.JMenuItem menuItemGestionMenus;
-    private javax.swing.JMenuItem menuItemGestionProvedores;
-    private javax.swing.JMenuItem menuItemGestionUsuarios;
+    public javax.swing.JLabel lblUsuarioActual;
+    public javax.swing.JMenuItem menuDesarolladores;
+    public javax.swing.JMenuItem menuItemGestionMenus;
+    public javax.swing.JMenuItem menuItemGestionProvedores;
+    public javax.swing.JMenuItem menuItemGestionUsuarios;
+    public javax.swing.JMenuItem menuReporteInsumos;
+    public javax.swing.JMenuItem menuReporteVentas;
     // End of variables declaration//GEN-END:variables
 }
