@@ -14,7 +14,7 @@ public class TomaComand extends javax.swing.JInternalFrame {
      * Creates new form TomaComand
      */
     public TomaComand(int numeroMesa) {
-        initComponents();
+        initComponents(numeroMesa);
         this.setTitle("Tomar Comanda - Mesa "+ numeroMesa);
         this.setClosable(true);
         this.setIconifiable(true);
@@ -29,7 +29,7 @@ public class TomaComand extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents(int numeroMesa) {
 
         jPanel1 = new javax.swing.JPanel();
         btnTacos = new javax.swing.JButton();
@@ -164,7 +164,7 @@ public class TomaComand extends javax.swing.JInternalFrame {
         jLabel4.setText("Comanda Actual");
 
         lblMesa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblMesa.setText("Comanda Mesa #0");
+        lblMesa.setText("Comanda Mesa #"+numeroMesa);
 
         tableComanda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
