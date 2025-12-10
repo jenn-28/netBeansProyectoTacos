@@ -15,35 +15,35 @@ public class MenuCajero extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        escritorio = new javax.swing.JDesktopPane();
         lblUsuarioActual = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuCobrarMesa = new javax.swing.JMenuItem();
+        menuCorteCaja = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        menuGestionInsumos = new javax.swing.JMenuItem();
+        menuAcercade = new javax.swing.JMenu();
+        menuDesarolladores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tacos y Lonches Pancho");
 
         jPanel1.setBackground(new java.awt.Color(224, 210, 193));
 
-        jDesktopPane1.setBackground(new java.awt.Color(224, 210, 193));
-        jDesktopPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Titulo"));
+        escritorio.setBackground(new java.awt.Color(224, 210, 193));
+        escritorio.setBorder(javax.swing.BorderFactory.createTitledBorder("Titulo"));
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 537, Short.MAX_VALUE)
         );
 
@@ -66,7 +66,7 @@ public class MenuCajero extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jDesktopPane1))
+                        .addComponent(escritorio))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(lblUsuarioActual, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -80,7 +80,7 @@ public class MenuCajero extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -97,33 +97,33 @@ public class MenuCajero extends javax.swing.JFrame {
         jMenu1.setText("          Caja         ");
         jMenu1.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
 
-        jMenuItem1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem1.setLabel("Cobrar Mesa");
-        jMenu1.add(jMenuItem1);
+        menuCobrarMesa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menuCobrarMesa.setLabel("Cobrar Mesa");
+        jMenu1.add(menuCobrarMesa);
 
-        jMenuItem2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem2.setText("Corte Caja");
-        jMenu1.add(jMenuItem2);
+        menuCorteCaja.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menuCorteCaja.setText("Corte Caja");
+        jMenu1.add(menuCorteCaja);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("          Inventario          ");
         jMenu2.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
 
-        jMenuItem3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem3.setText("Gestión de Insumos");
-        jMenu2.add(jMenuItem3);
+        menuGestionInsumos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menuGestionInsumos.setText("Gestión de Insumos");
+        jMenu2.add(menuGestionInsumos);
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("          Acerca de          ");
-        jMenu3.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        menuAcercade.setText("          Acerca de          ");
+        menuAcercade.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
 
-        jMenuItem4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem4.setText("Desarrolladores");
-        jMenu3.add(jMenuItem4);
+        menuDesarolladores.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menuDesarolladores.setText("Desarrolladores");
+        menuAcercade.add(menuDesarolladores);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(menuAcercade);
 
         setJMenuBar(jMenuBar1);
 
@@ -178,18 +178,18 @@ public class MenuCajero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnCancelar;
-    private javax.swing.JLabel btnRegresar;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    public javax.swing.JLabel btnCancelar;
+    public javax.swing.JLabel btnRegresar;
+    public javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
+    public javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblUsuarioActual;
+    public javax.swing.JLabel lblUsuarioActual;
+    public javax.swing.JMenu menuAcercade;
+    public javax.swing.JMenuItem menuCobrarMesa;
+    public javax.swing.JMenuItem menuCorteCaja;
+    public javax.swing.JMenuItem menuDesarolladores;
+    public javax.swing.JMenuItem menuGestionInsumos;
     // End of variables declaration//GEN-END:variables
 }
