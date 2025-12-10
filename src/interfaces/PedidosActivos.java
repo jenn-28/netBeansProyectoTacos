@@ -15,6 +15,9 @@ public class PedidosActivos extends javax.swing.JInternalFrame {
      */
     public PedidosActivos() {
         initComponents();
+        this.setClosable(true);
+        this.setMaximizable(true);
+        this.setIconifiable(true);
     }
 
     /**
