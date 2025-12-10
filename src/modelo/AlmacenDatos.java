@@ -24,5 +24,17 @@ public class AlmacenDatos {
         //Productos falsos para probar
         listaProductos.agregar(new Producto("Gringa", 45.0, "Alimentos"));
         listaProductos.agregar(new Producto("Coca Cola", 25.0, "Bebidas"));
+
+
+        pedidoTemporal = new Pedido(1);
+        pedidoTemporal.agregarDetalle(new DetallePedido(new Producto("Asada", 10, "Taco"), 2, "nomas"));
+        pedidoTemporal.agregarDetalle(new DetallePedido(new Producto("Asada", 10, "Taco"), 1, "nomas"));
+        pedidoTemporal.agregarDetalle(new DetallePedido(new Producto("Horchata", 25, "Bebida"), 1, "nomas"));
+        pedidoTemporal.agregarDetalle(new DetallePedido(new Producto("Horchata", 25, "BebidaTaco"), 1, "nomas"));
+
+        var venta = new Venta(pedidoTemporal);
+        pilaVentas.push(venta);
+
+        pedidoTemporal = null;
     }
 }

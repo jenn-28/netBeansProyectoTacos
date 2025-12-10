@@ -4,17 +4,21 @@
  */
 package interfaces;
 
+import controlador.CtrlReporteVentas;
+
 /**
  *
  * @author USUARIO
  */
 public class ReporteVentas extends javax.swing.JInternalFrame {
+    private CtrlReporteVentas controlador;
 
     /**
      * Creates new form ReporteVentas
      */
     public ReporteVentas() {
         initComponents();
+        controlador = new CtrlReporteVentas(this);
     }
 
     /**
