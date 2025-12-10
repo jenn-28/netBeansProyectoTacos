@@ -66,26 +66,29 @@ public class CtrlMenuCajero implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //Caja
+        
+        // 1. COBRAR MESA (Caja)
         if(e.getSource() == vista.menuCobrarMesa){
             CajaCobro v = new CajaCobro();    
-            new controlador.CtrlCaja(v);               
+            new controlador.CtrlCaja(v); 
             navegarA(v);
         }
+        
+        // 2. CORTE DE CAJA (Reporte)
         if(e.getSource() == vista.menuCorteCaja){
             CorteCaja v = new CorteCaja();    
-            new controlador.CtrlCorteCaja(v);
+            new controlador.CtrlCorteCaja(v); 
             navegarA(v);
         }
         
-        //Insumos
+        // 3. INSUMOS (Inventario)
         if(e.getSource() == vista.menuGestionInsumos){
             Inventario v = new Inventario();    
-            new controlador.CtrlInsumos(v);                
+            new controlador.CtrlInsumos(v); 
             navegarA(v);
         }
         
-        // Acerca de
+        // 4. ACERCA DE
         if(e.getSource() == vista.menuAcercade){
             mostrarCreditos();
         }
