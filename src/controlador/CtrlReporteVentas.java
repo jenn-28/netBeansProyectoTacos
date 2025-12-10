@@ -75,9 +75,9 @@ public class CtrlReporteVentas
                 var nombre = detalle.getProducto().getNombre();
                 var productoCount = mapaProductos.get(nombre);
                 if (productoCount == null) {
-                    mapaProductos.put(nombre, 1);
+                    mapaProductos.put(nombre, detalle.getCantidad());
                 } else {
-                    mapaProductos.put(nombre, productoCount + 1);
+                    mapaProductos.put(nombre, productoCount + detalle.getCantidad());
                 }
             });
         });
