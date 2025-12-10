@@ -8,6 +8,7 @@ public class Venta {
     private double total;
     private String fecha;
     private ListaEnlazada<DetallePedido> listaDeLoQueComieron;
+    private int numMesa;
     
     public Venta(Pedido pedidoTerminado) {
         // Generar folio simple basado en el tiempo
@@ -20,12 +21,14 @@ public class Venta {
         // Copiar datos del pedido
         this.total = pedidoTerminado.getTotal();
         this.listaDeLoQueComieron = pedidoTerminado.getDetalles();
+        this.numMesa = pedidoTerminado.getNumeroMesa();
     }
 
     public String getFolio() { return folio; }
     public double getTotal() { return total; }
     public String getFecha() { return fecha; }
     public ListaEnlazada<DetallePedido> getDetalles() { return listaDeLoQueComieron; }
+    public int getNumeroMesa() { return numMesa; }
     
     @Override
     public String toString() {

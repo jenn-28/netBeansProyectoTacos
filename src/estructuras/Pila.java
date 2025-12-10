@@ -1,5 +1,6 @@
 package estructuras;
 
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class Pila<T>
@@ -78,6 +79,19 @@ public class Pila<T>
             aux = aux.getAptSiguiente();
         }
         return cont;
+    }
+
+
+    public void forEach(Consumer<T> func)
+    {
+        Nodo<T> aux = cima;
+        while (aux != null) {
+            var dato = aux.getDato();
+            if (dato != null)
+                func.accept(dato);
+
+            aux = aux.getAptSiguiente();
+        }
     }
 
 }

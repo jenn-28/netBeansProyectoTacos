@@ -24,7 +24,8 @@ public class ReporteVentas extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -45,14 +46,16 @@ public class ReporteVentas extends javax.swing.JInternalFrame {
         jPanel1.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
 
         tableVentasDia.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+            new Object [][]
+            {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
-            new String [] {
-                "Folio", "Mesa", "Total", "Mesero"
+            new String []
+            {
+                "Folio", "Mesa", "Total"
             }
         ));
         jScrollPane1.setViewportView(tableVentasDia);
@@ -109,13 +112,15 @@ public class ReporteVentas extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(224, 210, 193));
 
         tableExistencias.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null},
                 {null, null},
                 {null, null},
                 {null, null}
             },
-            new String [] {
+            new String []
+            {
                 "Producto", "Existencias"
             }
         ));
@@ -166,7 +171,7 @@ public class ReporteVentas extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnProductoMasVendido;
+    public javax.swing.JButton btnProductoMasVendido;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -174,8 +179,8 @@ public class ReporteVentas extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel lblTotalVentas;
-    private javax.swing.JTable tableExistencias;
-    private javax.swing.JTable tableVentasDia;
+    public javax.swing.JLabel lblTotalVentas;
+    public javax.swing.JTable tableExistencias;
+    public javax.swing.JTable tableVentasDia;
     // End of variables declaration//GEN-END:variables
 }
