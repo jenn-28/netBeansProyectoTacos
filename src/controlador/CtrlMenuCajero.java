@@ -37,7 +37,7 @@ public class CtrlMenuCajero implements ActionListener{
         //acerca de
         this.vista.menuAcercade.addActionListener(this);
         
-        //Acciones
+        ///Acciones
         // 1. Botón REGRESAR
         this.vista.btnRegresar.addMouseListener(new MouseAdapter() {
             @Override
@@ -59,7 +59,7 @@ public class CtrlMenuCajero implements ActionListener{
         
         // Configuración de ventana
         this.vista.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
-        
+
         var usuario = SrvUsuario.getUsuario();
         vista.lblUsuarioActual.setText(usuario.getNombre());
     }
