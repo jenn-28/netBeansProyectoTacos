@@ -13,13 +13,8 @@ public class TomaComand extends javax.swing.JInternalFrame {
     /**
      * Creates new form TomaComand
      */
-    public TomaComand(int numeroMesa) {
+    public TomaComand() {
         initComponents();
-        this.setTitle("Tomar Comanda - Mesa "+ numeroMesa);
-        this.setClosable(true);
-        this.setIconifiable(true);
-        this.setMaximizable(true);
-        this.setResizable(true);
     }
 
     /**
@@ -72,7 +67,6 @@ public class TomaComand extends javax.swing.JInternalFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-
         jScrollPane1.setViewportView(jlistProductos);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N

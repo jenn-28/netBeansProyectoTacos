@@ -1,9 +1,9 @@
 package controlador;
 
-import interfaces.MenuMesero;
-import interfaces.MapMesas;
 import estructuras.Pila;
 import interfaces.Login;
+import interfaces.MapMesas;
+import interfaces.MenuMesero;
 import interfaces.PedidosActivos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,104 +36,119 @@ public class CtrlMenuMesero implements ActionListener{
                 regresar();
             }
         });
-// Poner manita al pasar el mouse
-        this.vista.btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        // Poner manita al pasar el mouse
+        this.vista.btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        // 2. Botón CANCELAR
-        this.vista.btnCancelar.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                cancelarSesion(); // Lógica de MASTER
-            }
-        });
-        this.vista.btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        
-        // Configuración de ventana (De MASTER)
-        this.vista.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        // 2. Botón CANCELAR
+        this.vista.btnCancelar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                cancelarSesion();
+            }
+        });
+        this.vista.btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        
+        // Configuración de ventana
+        this.vista.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
 
-        var usuario = SrvUsuario.getUsuario(); // De MASTER
-        vista.lblUsuarioActual.setText(usuario.getNombre()); // De MASTER
-    }
-    
-    
+        var usuario = SrvUsuario.getUsuario();
+        vista.lblUsuarioActual.setText(usuario.getNombre());
+    }
+    
+    
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // Caja
-        if(e.getSource() == vista.menuMapaMesas){ // Lógica de MASTER (navegarA)
-            MapMesas v = new MapMesas();
-            navegarA(v);
-        }
-        if(e.getSource() == vista.menuPedidos){ // Lógica de MASTER (navegarA)
-            PedidosActivos v = new PedidosActivos();
-            navegarA(v);
-        }
-        
-        // Acerca de
-        if(e.getSource() == vista.menuDesarrolladores){ // Lógica de MASTER
-            mostrarCreditos();
-        }
-    }
-    
-    public void navegarA(JInternalFrame nuevaVentana){
-        // Todo este método es de MASTER (basado en la pila historial)
-        if (!historial.estaVacia()){
-            JInternalFrame actual = historial.peek();
-            actual.setVisible(false);
-        }
-        
-        //poner en el desktopPane
-        vista.escritorio.add(nuevaVentana);
-        //guardar en la pila
-        historial.push(nuevaVentana);
-        //mostrar
-        centrarVentana(nuevaVentana);
-        nuevaVentana.setVisible(true);
-    }
-    
-    private void regresar(){
-        // Todo este método es de MASTER (basado en la pila historial)
-        if (historial.estaVacia()) return; //No hay nada a donde regresar
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        //Caja
+        if(e.getSource() == vista.menuMapaMesas){
+            MapMesas v = new MapMesas();    
+            //new controlador.(v);                
+            navegarA(v);
+        }
+        if(e.getSource() == vista.menuPedidos){
+            PedidosActivos v = new PedidosActivos();    
+            //new controlador.(v);                
+            navegarA(v);
+        }
+        
+        // Acerca de
+        if(e.getSource() == vista.menuDesarrolladores){
+            mostrarCreditos();
+        }
+    }
+    
+    public void navegarA(JInternalFrame nuevaVentana){
+        if (!historial.estaVacia()){
+            JInternalFrame actual = historial.peek();
+            actual.setVisible(false);
+        }
+        
+        //poner en el desktopPane
+        vista.escritorio.add(nuevaVentana);
+        //guardar en la pila
+        historial.push(nuevaVentana);
+        //mostrar
+        centrarVentana(nuevaVentana);
+        nuevaVentana.setVisible(true);
+    }
+    
+    private void regresar(){
+        if (historial.estaVacia()) return; //No hay nada a donde regresar
 
-        //Sacamos la ventana actual y la matamos
-        JInternalFrame actual = historial.pop();
-        actual.dispose(); 
+        //Sacamos la ventana actual y la matamos
+        JInternalFrame actual = historial.pop();
+        actual.dispose(); 
 
-        //Si queda una ventana anterior, la mostramos
-        if (!historial.estaVacia()) {
-            JInternalFrame anterior = historial.peek();
-            anterior.setVisible(true);
-            anterior.toFront();
-        }
-    }
-    
-    private void cancelarSesion(){
-        // Todo este método es de MASTER (Cierre de sesión)
-        int confirm = JOptionPane.showConfirmDialog(vista, "¿Cerrar sesión?");
-        if(confirm == JOptionPane.YES_OPTION){
-            vista.dispose(); //cerrar el menú admin
-            new Login().setVisible(true);
-        }
-    }
-    
-    private void centrarVentana(JInternalFrame frame) {
-        // Todo este método es de MASTER (Ayuda visual)
-        int x = (vista.escritorio.getWidth() - frame.getWidth()) / 2;
-        int y = (vista.escritorio.getHeight() - frame.getHeight()) / 2;
-        frame.setLocation(x, y);
-    }
-    
-    private void mostrarCreditos() {
-        // Todo este método es de MASTER (Información)
-        String mensaje = "<html><body style='width: 250px; text-align: center;'>"
-                + "<h2 style='color: #003366;'> Equipo de Desarrollo </h2>"
-                // ... contenido HTML de créditos ...
-                + "</body></html>";
+        //Si queda una ventana anterior, la mostramos
+        if (!historial.estaVacia()) {
+            JInternalFrame anterior = historial.peek();
+            anterior.setVisible(true);
+            anterior.toFront();
+        }
+    }
+    
+    private void cancelarSesion(){
+        int confirm = JOptionPane.showConfirmDialog(vista, "¿Cerrar sesión?");
+        if(confirm == JOptionPane.YES_OPTION){
+            vista.dispose(); //cerrar el menú admin
+            new Login().setVisible(true);
+        }
+    }
+    
+    private void centrarVentana(JInternalFrame frame) {
+        int x = (vista.escritorio.getWidth() - frame.getWidth()) / 2;
+        int y = (vista.escritorio.getHeight() - frame.getHeight()) / 2;
+        frame.setLocation(x, y);
+    }
+    
+    private void mostrarCreditos() {
+        String mensaje = "<html><body style='width: 250px; text-align: center;'>"
+                + "<h2 style='color: #003366;'> Equipo de Desarrollo </h2>"
+                + "<hr>"
+                + "<br>"
+                
+                + "<b>1. Castro Acosta Jennifer </b><br>"
+                + "<span style='color: gray;'>Reg: 24310145</span><br><br>"
+                
+                + "<b>2. Contreras Monsivais Cynthia Jimena</b><br>"
+                + "<span style='color: gray;'>Reg: 24310144</span><br><br>"
+                
+                + "<b>3. Lima Moreno Alanna Mishel</b><br>"
+                + "<span style='color: gray;'>Reg: 24310192</span><br><br>"
+                
+                + "<b>4. Padilla Martínez Ruy Felipe</b><br>"
+                + "<span style='color: gray;'>Reg: 24310136</span><br><br>"
+                
+                + "<hr>"
+                + "<i>Proyecto Gestaco © 2025</i>"
+                + "</body></html>";
 
-        // Mostramos el mensaje
-        JOptionPane.showMessageDialog(vista, 
-                mensaje, 
-                "Acerca de Nosotros", 
-                JOptionPane.PLAIN_MESSAGE);
-    }
+        // Mostramos el mensaje
+        // 'JOptionPane.PLAIN_MESSAGE' quita el icono de interrogación/info por defecto para que se vea más limpio
+        JOptionPane.showMessageDialog(vista, 
+                mensaje, 
+                "Acerca de Nosotros", 
+                JOptionPane.PLAIN_MESSAGE);
+    }
 }
+ 

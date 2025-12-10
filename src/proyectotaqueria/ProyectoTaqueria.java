@@ -5,7 +5,7 @@ import java.awt.Toolkit;
 
 public class ProyectoTaqueria {
 
-    public static Image getAppIcon() {
+   public static Image getAppIcon() {
         return Toolkit.getDefaultToolkit().getImage(
                 ProyectoTaqueria.class.getResource("/imagenes/icon.png")
         );
@@ -13,7 +13,7 @@ public class ProyectoTaqueria {
 
     public static void main(String[] args) {
         // Aquí solo lanzas tu ventana principal
-        new interfaces.MenuMesero().setVisible(true);
+        new interfaces.Login().setVisible(true);
     }
     
 }
