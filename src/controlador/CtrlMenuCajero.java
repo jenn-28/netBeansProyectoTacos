@@ -71,7 +71,7 @@ public class CtrlMenuCajero implements ActionListener{
         }
         if(e.getSource() == vista.menuCorteCaja){
             CorteCaja v = new CorteCaja();    
-            //corte
+            new controlador.CtrlCorteCaja(v);
             navegarA(v);
         }
         
