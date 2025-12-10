@@ -7,10 +7,11 @@ public class Venta {
     private String folio;
     private double total;
     private String fecha;
+    private String metodoPago;
     private ListaEnlazada<DetallePedido> listaDeLoQueComieron;
     private int numMesa;
     
-    public Venta(Pedido pedidoTerminado) {
+    public Venta(Pedido pedidoTerminado, String metodoPago) {
         // Generar folio simple basado en el tiempo
         this.folio = "V-" + System.currentTimeMillis();
         
@@ -22,16 +23,18 @@ public class Venta {
         this.total = pedidoTerminado.getTotal();
         this.listaDeLoQueComieron = pedidoTerminado.getDetalles();
         this.numMesa = pedidoTerminado.getNumeroMesa();
+        this.metodoPago = metodoPago;
     }
 
     public String getFolio() { return folio; }
     public double getTotal() { return total; }
     public String getFecha() { return fecha; }
+    public String getMetodoPago(){ return metodoPago; }
     public ListaEnlazada<DetallePedido> getDetalles() { return listaDeLoQueComieron; }
     public int getNumeroMesa() { return numMesa; }
     
     @Override
     public String toString() {
-        return "Folio: " + folio + " | Total: $" + total;
+        return "Folio: " + folio + " | "+metodoPago+ " | $" + total;
     }
 }
