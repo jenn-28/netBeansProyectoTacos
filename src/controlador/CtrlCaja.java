@@ -19,18 +19,16 @@ public class CtrlCaja implements ActionListener {
 
     private CajaCobro vista;
     private DefaultTableModel modeloTabla;
+    private Pedido pedidoSeleccionado = null;
     
     public CtrlCaja(CajaCobro vista) {
         this.vista = vista;
-        
-        //INICIALIZAR DATOS DE PRUEBA
-        crearPedidoPrueba();
 
         //AGRUPAR BOTONES DE PAGO
         ButtonGroup grupoPago = new ButtonGroup();
         grupoPago.add(vista.rbtnEfectivo);
         grupoPago.add(vista.rbtnTarjeta);
-        vista.rbtnEfectivo.setSelected(true); // Efectivo por defecto
+        vista.rbtnEfectivo.setSelected(true);
 
         // 3. LISTENERS DE BOTONES
         this.vista.btnCobrar.addActionListener(this);
@@ -117,8 +115,12 @@ public class CtrlCaja implements ActionListener {
         vista.cmbMesas.removeAllItems();
         vista.cmbMesas.addItem("Seleccione Mesa");
         
-        if (AlmacenDatos.pedidoTemporal != null && !AlmacenDatos.pedidoTemporal.isPagado()) {
-            vista.cmbMesas.addItem("Mesa 1 (Ocupada)");
+        for (int i = 0; i < AlmacenDatos.pedidosActivos.getTamanio(); i++) {
+            Pedido p = AlmacenDatos.pedidosActivos.obtener(i);
+            
+            if (!p.isPagado()) {
+                vista.cmbMesas.addItem("Mesa " + p.getNumeroMesa());
+            }
         }
     }
 
@@ -130,76 +132,80 @@ public class CtrlCaja implements ActionListener {
             return;
         }
 
-        if (seleccion.contains("Mesa 1") && AlmacenDatos.pedidoTemporal != null) {
-            modeloTabla.setRowCount(0);
-            for (int i = 0; i < AlmacenDatos.pedidoTemporal.getDetalles().getTamanio(); i++) {
-                DetallePedido dp = AlmacenDatos.pedidoTemporal.getDetalles().obtener(i);
-                modeloTabla.addRow(new Object[]{
-                    dp.getProducto().getNombre(),
-                    dp.getCantidad(),
-                    "$" + dp.getSubtotal()
-                });
+        // Extraer el número de la mesa del texto "Mesa 5" -> 5
+        try {
+            int numeroMesa = Integer.parseInt(seleccion.replaceAll("\\D+", "")); // Quitar letras
+            
+            // Buscar ese pedido en la lista
+            pedidoSeleccionado = null;
+            for (int i = 0; i < AlmacenDatos.pedidosActivos.getTamanio(); i++) {
+                Pedido p = AlmacenDatos.pedidosActivos.obtener(i);
+                if (p.getNumeroMesa() == numeroMesa && !p.isPagado()) {
+                    pedidoSeleccionado = p;
+                    break;
+                }
             }
-            vista.lblTotal.setText(String.valueOf(AlmacenDatos.pedidoTemporal.getTotal()));
+            
+            // Si lo encontramos, llenamos la tabla
+            if (pedidoSeleccionado != null) {
+                llenarTablaConPedido(pedidoSeleccionado);
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error al leer mesa seleccionada: " + e.getMessage());
         }
+    }
+    
+    private void llenarTablaConPedido(Pedido p) {
+        modeloTabla.setRowCount(0);
+        for (int i = 0; i < p.getDetalles().getTamanio(); i++) {
+            DetallePedido dp = p.getDetalles().obtener(i);
+            modeloTabla.addRow(new Object[]{
+                dp.getProducto().getNombre(),
+                dp.getCantidad(),
+                "$" + dp.getSubtotal()
+            });
+        }
+        vista.lblTotal.setText(String.valueOf(p.getTotal()));
     }
 
     private void cobrar() {
-        String seleccion = (String) vista.cmbMesas.getSelectedItem();
-        
-        //Validaciones Generales
-        if (seleccion == null || seleccion.equals("Seleccione Mesa") || AlmacenDatos.pedidoTemporal == null) {
-            JOptionPane.showMessageDialog(vista, "Selecciona una mesa con cuenta pendiente.");
+        if (pedidoSeleccionado == null) {
+            JOptionPane.showMessageDialog(vista, "Selecciona una mesa válida.");
             return;
         }
 
-        //Validación de Pago (Solo si es Efectivo)
+        // Validación de dinero
         if (vista.rbtnEfectivo.isSelected()) {
             try {
-                double total = AlmacenDatos.pedidoTemporal.getTotal();
+                double total = pedidoSeleccionado.getTotal();
                 double recibido = Double.parseDouble(vista.txtRecibido.getText());
-
                 if (recibido < total) {
-                    JOptionPane.showMessageDialog(vista, "El dinero recibido es insuficiente.");
+                    JOptionPane.showMessageDialog(vista, "Dinero insuficiente.");
                     return;
                 }
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(vista, "Ingresa una cantidad válida en 'Recibido'.");
+                JOptionPane.showMessageDialog(vista, "Ingresa cantidad válida.");
                 return;
             }
         }
 
-        //PROCESAR VENTA
-        Venta nuevaVenta = new Venta(AlmacenDatos.pedidoTemporal);
+        //CREAR VENTA Y GUARDAR
+        String metodo = vista.rbtnTarjeta.isSelected() ? "Tarjeta" : "Efectivo";
+        Venta nuevaVenta = new Venta(pedidoSeleccionado, metodo);
         AlmacenDatos.pilaVentas.push(nuevaVenta);
 
-        //CERRAR MESA
-        AlmacenDatos.pedidoTemporal.setPagado(true);
-        AlmacenDatos.pedidoTemporal = null;
+        //LIBERAR PEDIDO
+        pedidoSeleccionado.setPagado(true);
 
-        JOptionPane.showMessageDialog(vista, "¡Cobro realizado con éxito!\nFolio: " + nuevaVenta.getFolio());
+        JOptionPane.showMessageDialog(vista, "¡Cobro Exitoso!\nFolio: " + nuevaVenta.getFolio());
 
         //LIMPIEZA
-        cargarMesasActivas();
+        cargarMesasActivas(); // Recargar el combo (la mesa cobrada desaparecerá)
         limpiarTablaYTotal();
         vista.txtRecibido.setText("");
         vista.txtCambio.setText("");
-        
-        // Regenerar prueba
-        crearPedidoPrueba();
-    }
-    
-    //DATOS DE PRUEBA
-    private void crearPedidoPrueba() {
-        if (AlmacenDatos.pedidoTemporal == null) {
-            Pedido p = new Pedido(1);
-            if (AlmacenDatos.listaProductos.getTamanio() >= 2) {
-                p.agregarDetalle(new DetallePedido(AlmacenDatos.listaProductos.obtener(0), 2, "Con todo"));
-                p.agregarDetalle(new DetallePedido(AlmacenDatos.listaProductos.obtener(1), 1, "Fria"));
-                AlmacenDatos.pedidoTemporal = p;
-                System.out.println(">>> Pedido de prueba creado automáticamente en Mesa 1.");
-            }
-        }
+        pedidoSeleccionado = null;
     }
 
     private void inicializarTabla() {

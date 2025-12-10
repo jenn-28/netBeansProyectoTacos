@@ -37,9 +37,7 @@ public class TomaComand extends javax.swing.JInternalFrame {
         btnBebidas = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jlistProductos = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        lblProductoSeleccionado = new javax.swing.JLabel();
         spinerCantidad = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -74,16 +72,8 @@ public class TomaComand extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jlistProductos);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1.setText("Producto Seleccionado:");
-
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText("Cantidad:");
-
-        lblProductoSeleccionado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblProductoSeleccionado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblProductoSeleccionado.setText("Taco");
-        lblProductoSeleccionado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(86, 62, 46)));
 
         spinerCantidad.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         spinerCantidad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -112,15 +102,10 @@ public class TomaComand extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
-                                .addGap(27, 27, 27)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblProductoSeleccionado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(spinerCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addComponent(jLabel2)
+                                .addGap(128, 128, 128)
+                                .addComponent(spinerCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -140,12 +125,8 @@ public class TomaComand extends javax.swing.JInternalFrame {
                     .addComponent(btnLonches, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lblProductoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(spinerCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -271,7 +252,6 @@ public class TomaComand extends javax.swing.JInternalFrame {
     public javax.swing.JButton btnLimpiar;
     public javax.swing.JButton btnLonches;
     public javax.swing.JButton btnTacos;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     public javax.swing.JLabel jLabel4;
@@ -283,7 +263,6 @@ public class TomaComand extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane3;
     public javax.swing.JList<Object> jlistProductos;
     public javax.swing.JLabel lblMesa;
-    public javax.swing.JLabel lblProductoSeleccionado;
     public javax.swing.JLabel lblTotal;
     public javax.swing.JSpinner spinerCantidad;
     public javax.swing.JTable tableComanda;

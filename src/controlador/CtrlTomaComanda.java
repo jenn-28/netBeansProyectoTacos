@@ -23,25 +23,31 @@ public class CtrlTomaComanda implements ActionListener {
     public CtrlTomaComanda(TomaComand vista, int numMesa) {
         this.vista = vista;
         this.numMesa = numMesa;
-        this.pedidoActual = new Pedido(numMesa); // Creamos un pedido nuevo vacío
+        this.pedidoActual = new Pedido(numMesa);
         
-        // Listeners
-        this.vista.btnAcocina.addActionListener(this); // Botón Enviar
+        this.vista.lblMesa.setText("Comanda mesa #"+String.valueOf(numMesa));
+        
+        // Listeners Botones
+        this.vista.btnAcocina.addActionListener(this); 
         this.vista.btnEliminar.addActionListener(this);
         this.vista.btnTacos.addActionListener(this);
         this.vista.btnBebidas.addActionListener(this);
         this.vista.btnLonches.addActionListener(this);
+        this.vista.btnLimpiar.addActionListener(this);
         
-        // Doble click en la lista para agregar producto
+        
         this.vista.jlistProductos.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) agregarProductoAlPedido();
+                // Si es doble clic, agregamos
+                if (e.getClickCount() == 2) {
+                    agregarProductoAlPedido();
+                }
             }
         });
 
         inicializarTablaPedido();
-        cargarListaProductos("Todos"); // Cargar todo al inicio
+        cargarListaProductos("Todos");
     }
 
     @Override
@@ -50,63 +56,58 @@ public class CtrlTomaComanda implements ActionListener {
         if (e.getSource() == vista.btnEliminar) eliminarDelPedido();
         if (e.getSource() == vista.btnLimpiar) limpiarSeleccion();
         
-        // Filtros
-        if (e.getSource() == vista.btnTacos) cargarListaProductos("Alimentos"); // O "Taco" según tu BD
+        if (e.getSource() == vista.btnTacos) cargarListaProductos("Alimentos");
         if (e.getSource() == vista.btnBebidas) cargarListaProductos("Bebidas");
         if (e.getSource() == vista.btnLonches) cargarListaProductos("Todos");
     }
 
-    // 1. Cargar productos en la lista izquierda
     private void cargarListaProductos(String filtro) {
         DefaultListModel<Object> modeloLista = new DefaultListModel<>();
         vista.jlistProductos.setModel(modeloLista);
         
         for (int i = 0; i < AlmacenDatos.listaProductos.getTamanio(); i++) {
             Producto p = AlmacenDatos.listaProductos.obtener(i);
-            // Filtro simple (ajusta según tus categorías reales en Producto.java)
-            if (filtro.equals("Todos") || p.getCategoria().equalsIgnoreCase(filtro)) {
-                modeloLista.addElement(p); // Agregamos el objeto directo 
+            boolean mostrar = false;
+            if (filtro.equals("Todos")) mostrar = true;
+            else if (filtro.equals("Alimentos") && p.getCategoria().equals("Alimentos")) mostrar = true;
+            else if (filtro.equals("Bebidas") && p.getCategoria().equals("Bebidas")) mostrar = true;
+            
+            if (mostrar) {
+                modeloLista.addElement(p);
             }
         }
     }
 
-    // 2. Agregar a la tabla de la derecha
     private void agregarProductoAlPedido() {
-        // Obtener producto seleccionado
         Producto p = (Producto) vista.jlistProductos.getSelectedValue();
         if (p == null) return;
 
-        // Leer cantidad del spinner (Asumo que se llama spCantidad)
-        // Si no tienes nombre de variable, ponle spCantidad en el diseño
         int cantidad = 1; 
         try {
-             cantidad = (int) vista.spinerCantidad.getValue(); // Ajusta nombre variable
+             cantidad = (int) vista.spinerCantidad.getValue();
         } catch (Exception e) { cantidad = 1; }
         
         if (cantidad <= 0) cantidad = 1;
 
-        // Crear detalle y agregar al pedido local
-        DetallePedido detalle = new DetallePedido(p, cantidad, ""); // Notas vacías por ahora
+        DetallePedido detalle = new DetallePedido(p, cantidad, "");
         pedidoActual.agregarDetalle(detalle);
         
         llenarTablaPedido();
     }
 
-    // 3. Enviar a Base de Datos
     private void enviarACocina() {
         if (pedidoActual.getDetalles().getTamanio() == 0) {
             JOptionPane.showMessageDialog(vista, "El pedido está vacío.");
             return;
         }
 
-        // Guardar en la lista global de AlmacenDatos
         AlmacenDatos.pedidosActivos.agregar(pedidoActual);
         
-        // MOCK: También guardamos en el temporal para que el Cajero lo vea (Compatibilidad)
+        // Mock para cajero (Mesa 1 siempre va a temporal)
         if(numMesa == 1) AlmacenDatos.pedidoTemporal = pedidoActual;
 
         JOptionPane.showMessageDialog(vista, "¡Pedido enviado a cocina!");
-        vista.dispose(); // Cerrar ventana
+        vista.dispose();
     }
     
     private void eliminarDelPedido() {
@@ -115,7 +116,6 @@ public class CtrlTomaComanda implements ActionListener {
     }
     
     private void limpiarSeleccion() {
-        vista.lblProductoSeleccionado.setText("---");
         vista.spinerCantidad.setValue(0);
         vista.jlistProductos.clearSelection();
     }
