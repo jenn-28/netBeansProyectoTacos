@@ -202,6 +202,6 @@ public class MenuMesero extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblUsuarioActual;
+    public javax.swing.JLabel lblUsuarioActual;
     // End of variables declaration//GEN-END:variables
 }

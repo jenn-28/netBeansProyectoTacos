@@ -18,12 +18,15 @@ import servicios.SrvUsuario;
 
 public class CtrlMenuAdministrador implements ActionListener{
     private MenuAdministrador vista;
+    private String usuario;
     
     //Guardar las ventas abiertas en orden con una pila
     private Pila<JInternalFrame> historial = new Pila<>();
 
     public CtrlMenuAdministrador(MenuAdministrador vista) {
         this.vista = vista;
+        usuario = SrvUsuario.getUsuario().toString();
+        vista.lblUsuarioActual.setText(usuario);
         
         //Administración
         this.vista.menuItemGestionUsuarios.addActionListener(this);

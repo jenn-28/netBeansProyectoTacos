@@ -17,12 +17,15 @@ import servicios.SrvUsuario;
 
 public class CtrlMenuCajero implements ActionListener{
     private MenuCajero vista;
+    private String usuario;
     
     //Guardar las ventas abiertas en orden con una pila
     private Pila<JInternalFrame> historial = new Pila<>();
 
     public CtrlMenuCajero(MenuCajero vista) {
         this.vista = vista;
+        usuario = SrvUsuario.getUsuario().toString();
+        vista.lblUsuarioActual.setText(usuario);
         
         //CAJA
         this.vista.menuCorteCaja.addActionListener(this);
