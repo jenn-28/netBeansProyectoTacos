@@ -18,6 +18,7 @@ public class CtrlMapMesas implements ActionListener {
         this.escritorio = escritorio;
 
         for(JToggleButton btn: vista.getBotonesMesas()){
+            System.out.print("Boton presionado "+ btn);
             btn.addActionListener(this);
         }
     }
