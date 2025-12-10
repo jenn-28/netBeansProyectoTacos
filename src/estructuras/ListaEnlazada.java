@@ -1,5 +1,6 @@
 package estructuras;
 
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -89,8 +90,9 @@ public class ListaEnlazada<T> {
         inicio = null;
         longitud = 0;
     }
+
     
-     public ListaEnlazada<T> filtrar(Predicate<T> predicate)
+    public ListaEnlazada<T> filtrar(Predicate<T> predicate)
     {
         var res = new ListaEnlazada<T>();
 
@@ -106,7 +108,7 @@ public class ListaEnlazada<T> {
 
         return res;
     }
-
+    
     public <R> ListaEnlazada<R> mapear(Function<T, R> func)
     {
         var res = new ListaEnlazada<R>();
@@ -125,4 +127,36 @@ public class ListaEnlazada<T> {
 
         return res;
     }
+
+    public void forEach(Consumer<T> func)
+    {
+        var aux = inicio;
+        while (aux != null) {
+            var dato = aux.getDato();
+
+            if (dato != null)
+                func.accept(dato);
+
+            aux = aux.getAptSiguiente();
+        }
+    }
+
+    public Integer buscar(Predicate<T> predicate)
+    {
+        int idx = 0;
+
+        var aux = inicio;
+        while (aux != null) {
+            var dato = aux.getDato();
+
+            if (dato != null && predicate.test(dato))
+                return idx;
+
+            aux = aux.getAptSiguiente();
+            idx++;
+        }
+
+        return null;
+    }
+        
 }

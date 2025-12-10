@@ -1,13 +1,16 @@
 package interfaces;
 
+import controlador.CtrlLogin;
 import proyectotaqueria.ProyectoTaqueria;
 
 public class Login extends javax.swing.JFrame {
 
+    private CtrlLogin controlador;
+
     public Login() {
         initComponents();
         setIconImage(ProyectoTaqueria.getAppIcon());
-
+        controlador = new CtrlLogin(this);
     }
 
  
